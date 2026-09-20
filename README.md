@@ -11,7 +11,9 @@ https://github.com/user-attachments/assets/7496afda-b3e3-4e1d-b03f-ddc43982b7a1
 
 Built for the Llamacon Hackathon ([05/04/2025]).
 
-## The Problem
+## 🌟 Why OrgLens?
+
+### The Problem
 
 Finding the right expert or understanding code history in large organizations is time-consuming and inefficient. Key knowledge often stays siloed or buried in commit logs.
 
