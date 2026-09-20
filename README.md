@@ -66,6 +66,7 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
     # Add your API keys and Django secret key:
     # LLAMA_API_KEY=your_llama_api_key
     # Add any other necessary backend env vars (like DB config if not SQLite)
+    # Note: Copy .env.example if available or follow the required keys.
     python manage.py migrate # Run migrations if needed
     python manage.py runserver
     ```
