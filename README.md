@@ -24,14 +24,14 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 *   Instantly find contributors with specific expertise.
 *   Understand individual contributions through AI-generated profiles.
 *   Query your codebase's history and activity using natural language.
-*   Interact with contributor "digital twins" (AI based on their work) for context before direct contact.
+*   Interact with contributor "digital twins" (AI based on their work) for context before direct contact**.
 
 ## Core Features
 
-*   AI-Powered Contributor Summaries & Profiles.
-*   Natural Language Codebase Querying.
-*   Repository & Contributor Exploration.
-*   "Digital Twin" Interaction via Chat.
+✨ **AI-Powered Contributor Summaries & Profiles**.
+🔍 **Natural Language Codebase Querying**.
+🌐 **Repository & Contributor Exploration**.
+🤖 **"Digital Twin" Interaction via Chat.
 
 ## Tech Stack
 
