@@ -52,7 +52,7 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/rajneeshverma1/Hack-e-awadh
-    cd llama-hack
+    cd Hack-e-awadh
     ```
 2.  **Set up the Backend (Django Server):**
     ```bash
