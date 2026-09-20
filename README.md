@@ -9,8 +9,6 @@ https://github.com/user-attachments/assets/7496afda-b3e3-4e1d-b03f-ddc43982b7a1
 
 *OrgLens: Understanding your codebase and connecting with experts, powered by Llama.*
 
-Built for the Llamacon Hackathon ([05/04/2025]).
-
 ## 🌟 Why OrgLens?
 
 ### The Problem
