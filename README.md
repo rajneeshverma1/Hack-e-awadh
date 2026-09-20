@@ -33,12 +33,15 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 🌐 **Repository & Contributor Exploration**.
 🤖 **"Digital Twin" Interaction via Chat.
 
-## Tech Stack
+## 🛠 Tech Stack
 
-*   **Backend:** Python (Django), Llama API
-*   **Frontend:** ReactJS, Vite, Tailwind CSS
-*   **Data APIs:** GitHub API
-*   **Real-time Conversation:** PlayAI API powered by Groq
+| Component | Technology |
+|---|---|
+| **Backend** | Python, Django, Llama API |
+| **Frontend** | ReactJS, Vite, Tailwind CSS |
+| **Data APIs** | GitHub API |
+| **Real-time Voice/Chat** | PlayAI API powered by Groq |
+
 
 ## Getting Started
 
