@@ -56,7 +56,7 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
     git clone https://github.com/TheCl3m/llama-hack
     cd llama-hack
     ```
-2.  **Set up Backend (Django):**
+2.  **Set up the Backend (Django Server):**
     ```bash
     cd backend
     python -m venv venv
