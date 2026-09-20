@@ -1,5 +1,9 @@
 # OrgLens - Llamacon Hackathon Winner 🏆
 
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
+[![Llama](https://img.shields.io/badge/Meta_Llama-0467DF?style=for-the-badge&logo=meta&logoColor=white)](https://llama.meta.com/)
+
 
 https://github.com/user-attachments/assets/7496afda-b3e3-4e1d-b03f-ddc43982b7a1
 
