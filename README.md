@@ -71,7 +71,7 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
     ```
     *The backend should now be running, typically on `http://127.0.0.1:8000/`.*
 
-3.  **Set up Frontend:**
+3.  **Set up the Frontend (Vite/React):**
     *(In a separate terminal)*
     ```bash
     cd frontend
