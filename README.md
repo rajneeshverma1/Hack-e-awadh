@@ -1,4 +1,4 @@
-# OrgLens - Llamacon Hackathon Winner 🏆
+# OrgLens - Codebase Intelligence
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
