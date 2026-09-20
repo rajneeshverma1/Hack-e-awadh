@@ -43,8 +43,14 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 | **Real-time Voice/Chat** | PlayAI API powered by Groq |
 
 
-## Getting Started
+## 🚀 Getting Started
 
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- Git
+
+### Installation
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/TheCl3m/llama-hack
