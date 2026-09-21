@@ -76,7 +76,7 @@ export default function Layout() {
                             <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
                                 <div className="flex h-16 shrink-0 items-center">
                                     <img
-                                        alt="App Logo"
+                                        alt="OrgLens Application Logo" title="OrgLens Logo"
                                         src={logo}
                                         className="h-8 w-auto"
                                     />
@@ -155,7 +155,7 @@ export default function Layout() {
                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
                         <div className="flex h-16 shrink-0 items-center">
                             <img
-                                alt="App Logo"
+                                alt="OrgLens Application Logo" title="OrgLens Logo"
                                 src={logo}
                                 className="h-8 w-auto"
                             />
