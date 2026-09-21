@@ -105,3 +105,8 @@ Commit these changes and push to GitHub.
 4. Click **Deploy**.
 
 Vercel will build your React application and provide you with a live, production-ready URL!
+
+
+### 5. Theme Switching (Light/Dark Mode)
+- **Top Header Toggle**: Click the ☀️ / 🌙 theme toggle button located on the top header navbar.
+- **Instant Persistence**: Your preference is saved locally and applies across all pages seamlessly.
