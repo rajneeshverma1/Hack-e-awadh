@@ -6,7 +6,7 @@ import { useData } from '../context/DataContext';
 // import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 export default function Contributors() {
-  const { contributors, isLoading, error } = useData();
+  const { contributors, isLoading, error } = useData(); // Fetch global contributor state
 
   if (isLoading) {
     return <div className="text-center py-10">Loading Contributors...</div>;
