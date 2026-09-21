@@ -17,8 +17,11 @@ import {
     HomeIcon,
     UsersIcon,
     XMarkIcon,
+    SunIcon,
+    MoonIcon,
 } from '@heroicons/react/24/outline';
 import LlamaChat from './LlamaChat';
+import { useTheme } from '../context/ThemeContext';
 // Unused imports removed
 
 // --- Define App Navigation ---
@@ -45,6 +48,7 @@ function classNames(...classes) {
 
 export default function Layout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const { isDarkMode, toggleTheme } = useTheme();
 
     return (
         <>
@@ -225,25 +229,62 @@ export default function Layout() {
                     </div>
                 </div>
 
-                {/* Top Bar (Mobile Only) */}
-                <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-                    <button type="button" onClick={() => setSidebarOpen(true)} className="-m-2.5 p-2.5 text-gray-400 lg:hidden">
-                        <span className="sr-only">Open sidebar</span>
-                        <Bars3Icon aria-hidden="true" className="size-6" />
-                    </button>
-                    <div className="flex-1 text-sm font-semibold leading-6 text-white">Dashboard</div>
-                    <a href="#">
-                        <span className="sr-only">Your profile</span>
-                        <img
-                            alt="User Avatar"
-                            src={user.imageUrl} // Use your user image
-                            className="size-8 rounded-full bg-gray-800"
-                        />
-                    </a>
-                </div>
+                {/* Top Header Navbar */}
+                <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md px-4 shadow-xs sm:px-6 lg:px-8 lg:ml-72 transition-colors duration-300">
+                    <div className="flex items-center gap-x-4">
+                        <button
+                            type="button"
+                            onClick={() => setSidebarOpen(true)}
+                            className="-m-2.5 p-2.5 text-gray-700 dark:text-gray-200 lg:hidden"
+                        >
+                            <span className="sr-only">Open sidebar</span>
+                            <Bars3Icon aria-hidden="true" className="size-6" />
+                        </button>
+                        <span className="text-sm font-bold text-gray-900 dark:text-white tracking-wide">
+                            OrgLens Codebase Intelligence
+                        </span>
+                    </div>
+
+                    <div className="flex items-center gap-x-3 sm:gap-x-4">
+                        {/* Theme Toggle Button */}
+                        <button
+                            onClick={toggleTheme}
+                            type="button"
+                            className="group flex items-center gap-x-2 rounded-full bg-gray-100 dark:bg-gray-800 px-3.5 py-1.5 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 active:scale-95 transition-all duration-300 shadow-xs border border-gray-200 dark:border-gray-700 cursor-pointer"
+                            title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                            aria-label="Toggle theme"
+                        >
+                            {isDarkMode ? (
+                                <>
+                                    <SunIcon className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform duration-300" />
+                                    <span>☀️ Light Mode</span>
+                                </>
+                            ) : (
+                                <>
+                                    <MoonIcon className="w-4 h-4 text-indigo-400 group-hover:-rotate-12 transition-transform duration-300" />
+                                    <span>🌙 Dark Mode</span>
+                                </>
+                            )}
+                        </button>
+
+                        <div className="h-6 w-px bg-gray-200 dark:bg-gray-700" aria-hidden="true" />
+
+                        {/* User Profile */}
+                        <div className="flex items-center gap-x-3">
+                            <img
+                                alt="User Avatar"
+                                src={user.imageUrl}
+                                className="size-8 rounded-full bg-gray-800 ring-2 ring-indigo-500/20"
+                            />
+                            <span className="hidden sm:inline-block text-sm font-semibold text-gray-900 dark:text-white">
+                                {user.name}
+                            </span>
+                        </div>
+                    </div>
+                </header>
 
                 {/* Main Content Area */}
-                <main className="py-10 lg:pl-72 h-full">
+                <main className="py-8 lg:pl-72 h-full">
                     <div className="px-4 sm:px-6 lg:px-8 pb-20"> {/* Added padding bottom for chat component */}
                         <Outlet />
                     </div>
