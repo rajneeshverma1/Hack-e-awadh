@@ -152,7 +152,7 @@ export default function ContributorDetail() {
       </div>
 
       {/* Main Summary - First-Class Citizen */}
-      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 mb-8 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 transition-all duration-300 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 mb-8 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex items-center">
           <DocumentTextIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
           <h2 className="text-lg font-medium text-gray-900 dark:text-white">Contributor Summary</h2>
@@ -185,7 +185,7 @@ export default function ContributorDetail() {
                 const showCommits = expandedSections[commitsKey];
                 
                 return (
-                  <div key={work.id} className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+                  <div key={work.id} className="bg-white dark:bg-slate-800 transition-all duration-300 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
                     {/* Work Header */}
                     <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
                       <h3 className="font-medium text-gray-900 dark:text-white">
@@ -309,7 +309,7 @@ export default function ContributorDetail() {
               })}
             </div>
           ) : (
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 text-center">
+            <div className="bg-white dark:bg-slate-800 transition-all duration-300 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 text-center">
               <p className="text-gray-500 dark:text-gray-400">No specific work items listed for this contributor.</p>
             </div>
           )}
@@ -318,7 +318,7 @@ export default function ContributorDetail() {
         {/* Activity Overview - Right Side (narrower) */}
         <div className="lg:col-span-4">
           {/* Repository Overview Card */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div className="bg-white dark:bg-slate-800 transition-all duration-300 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-6">
             <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
               <h3 className="text-sm font-medium text-gray-900 dark:text-white">Active Repositories</h3>
             </div>
@@ -344,7 +344,7 @@ export default function ContributorDetail() {
           </div>
           
           {/* Activity Timeline Card */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 transition-all duration-300 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
             <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
               <h3 className="text-sm font-medium text-gray-900 dark:text-white">Recent Activity</h3>
             </div>
@@ -408,7 +408,7 @@ export default function ContributorDetail() {
       </div>
       
       {/* Visualization Section - At the end */}
-      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-8">
+      <div className="bg-white dark:bg-slate-800 transition-all duration-300 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-8">
         <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700">
           <h2 className="text-lg font-medium text-gray-900 dark:text-white">Repository Connections</h2>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
