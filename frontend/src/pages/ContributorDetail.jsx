@@ -59,11 +59,11 @@ export default function ContributorDetail() {
 
   if (error) {
     return (
-      <div className="rounded-lg bg-gray-50 p-6 text-center">
-        <div className="h-12 w-12 text-gray-500 mx-auto mb-4">⚠️</div>
-        <h3 className="text-lg font-medium text-gray-800">Error loading contributor data</h3>
-        <p className="mt-2 text-gray-600">{error}</p>
-        <Link to="/contributors" className="inline-flex items-center mt-4 text-sm font-medium text-gray-600 hover:text-indigo-600">
+      <div className="rounded-lg bg-gray-50 dark:bg-slate-900/50 p-6 text-center">
+        <div className="h-12 w-12 text-gray-500 dark:text-gray-400 mx-auto mb-4">⚠️</div>
+        <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">Error loading contributor data</h3>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">{error}</p>
+        <Link to="/contributors" className="inline-flex items-center mt-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600">
           <ArrowLeftIcon className="mr-1 h-4 w-4" />
           Return to Contributors
         </Link>
@@ -76,10 +76,10 @@ export default function ContributorDetail() {
 
   if (!contributor) {
     return (
-      <div className="text-center py-10 bg-gray-50 rounded-lg">
+      <div className="text-center py-10 bg-gray-50 dark:bg-slate-900/50 rounded-lg">
         <UserCircleIcon className="h-16 w-16 text-gray-400 mx-auto mb-2" />
-        <h2 className="text-xl font-medium text-gray-900">Contributor Not Found</h2>
-        <p className="mt-1 text-gray-500">The contributor you're looking for doesn't exist or was removed.</p>
+        <h2 className="text-xl font-medium text-gray-900 dark:text-white">Contributor Not Found</h2>
+        <p className="mt-1 text-gray-500 dark:text-gray-400">The contributor you're looking for doesn't exist or was removed.</p>
         <Link to="/contributors" className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
           <ArrowLeftIcon className="mr-2 h-4 w-4" aria-hidden="true" />
           Back to Contributors
@@ -116,12 +116,12 @@ export default function ContributorDetail() {
           />
           <div>
             <div className="flex items-center flex-wrap">
-              <h1 className="text-2xl font-bold text-gray-900 mr-3">{contributor.username}</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white mr-3">{contributor.username}</h1>
               <a 
                 href={contributor.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+                className="inline-flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors"
               >
                 <LinkIcon className="h-3.5 w-3.5 mr-1" />
                 <span>GitHub</span>
@@ -138,7 +138,7 @@ export default function ContributorDetail() {
                 <CheckCircleIcon className="mr-1 h-3.5 w-3.5" />
                 {totalIssues} Resolved Issues
               </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-gray-100">
                 <FolderIcon className="mr-1 h-3.5 w-3.5" />
                 {totalRepositories} Repositories
               </span>
@@ -146,19 +146,19 @@ export default function ContributorDetail() {
           </div>
         </div>
         
-        <div className="mt-4 md:mt-0 text-sm text-gray-500">
+        <div className="mt-4 md:mt-0 text-sm text-gray-500 dark:text-gray-400">
           Last updated: {formatDate(contributor.updated_at)}
         </div>
       </div>
 
       {/* Main Summary - First-Class Citizen */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center">
-          <DocumentTextIcon className="h-5 w-5 text-gray-500 mr-2" />
-          <h2 className="text-lg font-medium text-gray-900">Contributor Summary</h2>
+      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 mb-8 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex items-center">
+          <DocumentTextIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Contributor Summary</h2>
         </div>
         <div className="px-6 py-5">
-          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-gray-700 prose-a:underline hover:prose-a:text-indigo-600">
+          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-gray-900 dark:text-white prose-p:text-gray-700 dark:text-gray-200 prose-a:text-gray-700 dark:text-gray-200 prose-a:underline hover:prose-a:text-indigo-600">
             <ReactMarkdown>{contributor.summary}</ReactMarkdown>
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function ContributorDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         {/* Repository Activity - Left Side (wider) */}
         <div className="lg:col-span-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
             <FolderIcon className="h-5 w-5 text-indigo-500 mr-2" />
             Repository Contributions
           </h2>
@@ -185,13 +185,13 @@ export default function ContributorDetail() {
                 const showCommits = expandedSections[commitsKey];
                 
                 return (
-                  <div key={work.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                  <div key={work.id} className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
                     {/* Work Header */}
-                    <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                      <h3 className="font-medium text-gray-900">
+                    <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
+                      <h3 className="font-medium text-gray-900 dark:text-white">
                         <Link 
                           to={`/repositories/${work.repository}`} 
-                          className="text-gray-900 hover:text-indigo-600 flex items-center"
+                          className="text-gray-900 dark:text-white hover:text-indigo-600 flex items-center"
                         >
                           <FolderIcon className="h-4 w-4 mr-1.5 text-indigo-500" />
                           {repoName}
@@ -201,7 +201,7 @@ export default function ContributorDetail() {
                     
                     {/* Work Summary */}
                     <div className="px-6 py-4">
-                      <div className="prose prose-sm max-w-none text-gray-700">
+                      <div className="prose prose-sm max-w-none text-gray-700 dark:text-gray-200">
                         <ReactMarkdown>{work.summary}</ReactMarkdown>
                       </div>
                     </div>
@@ -210,12 +210,12 @@ export default function ContributorDetail() {
                     <div>
                       {/* Issues Section */}
                       {work.issues && work.issues.length > 0 && (
-                        <div className="border-t border-gray-100">
+                        <div className="border-t border-gray-100 dark:border-slate-700">
                           <button 
                             onClick={() => toggleSection(work.repository, 'issues')}
                             className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
+                            <span className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-200">
                               <CheckCircleIcon className="h-4 w-4 mr-2 text-green-600" />
                               {work.issues.length} Resolved Issue{work.issues.length !== 1 ? 's' : ''}
                             </span>
@@ -226,7 +226,7 @@ export default function ContributorDetail() {
                           </button>
                           
                           {showIssues && (
-                            <div className="px-6 py-3  border-t border-gray-200 divide-y divide-gray-200">
+                            <div className="px-6 py-3  border-t border-gray-200 dark:border-slate-700 divide-y divide-gray-200 dark:divide-slate-700">
                               {work.issues.map(issue => (
                                 <div key={issue.id} className="py-4 first:pt-1 last:pb-1 group">
                                   <div className="flex justify-between items-start">
@@ -235,17 +235,17 @@ export default function ContributorDetail() {
                                         href={issue.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="font-medium text-gray-900 hover:text-indigo-600 group-hover:underline flex items-center"
+                                        className="font-medium text-gray-900 dark:text-white hover:text-indigo-600 group-hover:underline flex items-center"
                                       >
                                         <CheckCircleIcon className="h-4 w-4 mr-1.5 text-green-600" />
                                         <span>{issue.url.split('/').pop()}</span>
                                         <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                                       </a>
-                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600">
+                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600 dark:text-gray-300">
                                         <ReactMarkdown>{issue.summary}</ReactMarkdown>
                                       </div>
                                     </div>
-                                    <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
+                                    <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
                                       {formatDate(issue.updated_at)}
                                     </span>
                                   </div>
@@ -258,12 +258,12 @@ export default function ContributorDetail() {
                       
                       {/* Commits Section */}
                       {work.commits && work.commits.length > 0 && (
-                        <div className="border-t border-gray-100">
+                        <div className="border-t border-gray-100 dark:border-slate-700">
                           <button 
                             onClick={() => toggleSection(work.repository, 'commits')}
                             className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
+                            <span className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-200">
                               <CodeBracketIcon className="h-4 w-4 mr-2 text-indigo-600" />
                               {work.commits.length} Commit{work.commits.length !== 1 ? 's' : ''}
                             </span>
@@ -274,7 +274,7 @@ export default function ContributorDetail() {
                           </button>
                           
                           {showCommits && (
-                            <div className="px-6 py-3  border-t border-gray-200 divide-y divide-gray-200">
+                            <div className="px-6 py-3  border-t border-gray-200 dark:border-slate-700 divide-y divide-gray-200 dark:divide-slate-700">
                               {work.commits.map(commit => (
                                 <div key={commit.id} className="py-4 first:pt-1 last:pb-1 group">
                                   <div className="flex justify-between items-start">
@@ -283,17 +283,17 @@ export default function ContributorDetail() {
                                         href={commit.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="font-medium text-gray-900 hover:text-indigo-600 group-hover:underline flex items-center"
+                                        className="font-medium text-gray-900 dark:text-white hover:text-indigo-600 group-hover:underline flex items-center"
                                       >
                                         <CodeBracketIcon className="h-4 w-4 mr-1.5 text-indigo-600" />
                                         <span>{commit.url.split('/').pop()}</span>
                                         <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                                       </a>
-                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600">
+                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600 dark:text-gray-300">
                                         <ReactMarkdown>{commit.summary}</ReactMarkdown>
                                       </div>
                                     </div>
-                                    <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
+                                    <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
                                       {formatDate(commit.updated_at)}
                                     </span>
                                   </div>
@@ -309,8 +309,8 @@ export default function ContributorDetail() {
               })}
             </div>
           ) : (
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
-              <p className="text-gray-500">No specific work items listed for this contributor.</p>
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 text-center">
+              <p className="text-gray-500 dark:text-gray-400">No specific work items listed for this contributor.</p>
             </div>
           )}
         </div>
@@ -318,25 +318,25 @@ export default function ContributorDetail() {
         {/* Activity Overview - Right Side (narrower) */}
         <div className="lg:col-span-4">
           {/* Repository Overview Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-6">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Active Repositories</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-6">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Active Repositories</h3>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-100 dark:divide-slate-700">
               {filteredRepositories.map(repo => (
                 <Link 
                   key={repo.id}
                   to={`/repositories/${repo.id}`}
-                  className="flex items-center px-5 py-3 hover:bg-gray-50 transition-colors"
+                  className="flex items-center px-5 py-3 hover:bg-gray-50 dark:bg-slate-900/50 transition-colors"
                 >
                   <FolderIcon className="h-4 w-4 mr-2 text-indigo-500" />
-                  <span className="text-sm text-gray-700 hover:text-indigo-600 transition-colors">
+                  <span className="text-sm text-gray-700 dark:text-gray-200 hover:text-indigo-600 transition-colors">
                     {repo.name}
                   </span>
                 </Link>
               ))}
               {filteredRepositories.length === 0 && (
-                <div className="px-5 py-4 text-sm text-gray-500 text-center">
+                <div className="px-5 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">
                   No repositories found
                 </div>
               )}
@@ -344,13 +344,13 @@ export default function ContributorDetail() {
           </div>
           
           {/* Activity Timeline Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Recent Activity</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Recent Activity</h3>
             </div>
             <div className="px-5 py-4">
               {/* Show timeline of most recent activities based on dates */}
-              <ol className="relative border-l border-gray-200 ml-3 space-y-6">
+              <ol className="relative border-l border-gray-200 dark:border-slate-700 ml-3 space-y-6">
                 {/* Dynamically generate timeline from work items */}
                 {contributor.works
                   .flatMap(work => [
@@ -382,24 +382,24 @@ export default function ContributorDetail() {
                         }
                       </span>
                       <div className="ml-1">
-                        <time className="block text-xs font-normal leading-none text-gray-500 mb-1">
+                        <time className="block text-xs font-normal leading-none text-gray-500 dark:text-gray-400 mb-1">
                           {formatDate(item.date)}
                         </time>
                         <a 
                           href={item.url} 
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm font-medium text-gray-900 hover:text-indigo-600 hover:underline"
+                          className="text-sm font-medium text-gray-900 dark:text-white hover:text-indigo-600 hover:underline"
                         >
                           {item.summary.length > 60 ? `${item.summary.substring(0, 60)}...` : item.summary}
                         </a>
-                        <p className="text-xs text-gray-500 mt-0.5">{item.repo}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.repo}</p>
                       </div>
                     </li>
                   ))
                 }
                 {contributor.works.flatMap(work => [...(work.commits || []), ...(work.issues || [])]).length === 0 && (
-                  <p className="text-sm text-gray-500">No recent activity</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">No recent activity</p>
                 )}
               </ol>
             </div>
@@ -408,10 +408,10 @@ export default function ContributorDetail() {
       </div>
       
       {/* Visualization Section - At the end */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-lg font-medium text-gray-900">Repository Connections</h2>
-          <p className="mt-1 text-sm text-gray-500">
+      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-8">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Repository Connections</h2>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Visual representation of {contributor.username}'s contributions across repositories
           </p>
         </div>

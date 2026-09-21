@@ -32,7 +32,7 @@ const ContributorNode = ({ data }) => {
   return (
     // The main div remains the group parent
     <div
-      className="contributor-node group relative bg-gradient-to-r from-green-50 to-blue-50 border border-gray-200 rounded-lg shadow-sm transition-all hover:shadow-md flex items-center h-full"
+      className="contributor-node group relative bg-gradient-to-r from-green-50 to-blue-50 border border-gray-200 dark:border-slate-700 rounded-lg shadow-sm transition-all hover:shadow-md flex items-center h-full"
       style={{ width: nodeWidth, height: nodeHeight }}
     >
        {/* Node Content Wrapper */}
@@ -45,10 +45,10 @@ const ContributorNode = ({ data }) => {
             <img
               src={data.avatar_url}
               alt={data.username}
-              className="w-9 h-9 rounded-full border border-gray-300 shadow-sm flex-shrink-0"
+              className="w-9 h-9 rounded-full border border-gray-300 dark:border-slate-600 shadow-sm flex-shrink-0"
             />
           ) : (
-            <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 font-medium text-sm flex-shrink-0">
+            <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 dark:text-gray-300 font-medium text-sm flex-shrink-0">
               {data.username ? data.username.substring(0, 1).toUpperCase() : '?'}
             </div>
           )}
@@ -65,7 +65,7 @@ const ContributorNode = ({ data }) => {
                    opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto
                    transition-opacity duration-200 delay-300 group-hover:delay-300"
       >
-        <div className="bg-white shadow-xl rounded-lg p-4 border border-gray-200">
+        <div className="bg-white dark:bg-slate-800 shadow-xl rounded-lg p-4 border border-gray-200 dark:border-slate-700">
           <CustomTooltipContent content={tooltipData} />
         </div>
       </div>

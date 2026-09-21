@@ -183,8 +183,8 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto pb-4">
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-500 mb-4"></div>
-          <h3 className="text-lg font-medium text-gray-800">Loading Organization Data</h3>
-          <p className="mt-2 text-sm text-gray-500">Preparing your dashboard...</p>
+          <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">Loading Organization Data</h3>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Preparing your dashboard...</p>
         </div>
       </div>
     );
@@ -195,8 +195,8 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto pb-4">
         <div className="rounded-lg bg-red-50 p-8 text-center">
           <div className="h-12 w-12 text-red-500 mx-auto mb-4">⚠️</div>
-          <h3 className="text-xl font-medium text-gray-800">Error loading dashboard data</h3>
-          <p className="mt-2 text-gray-600">{error}</p>
+          <h3 className="text-xl font-medium text-gray-800 dark:text-gray-100">Error loading dashboard data</h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-300">{error}</p>
           <button
             onClick={() => window.location.reload()}
             className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
@@ -243,50 +243,50 @@ export default function Dashboard() {
 
         {/* Stats Cards Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 pb-6 sm:px-10">
-          <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="bg-white dark:bg-slate-800 bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
             <div className="flex items-center">
               <div className="bg-indigo-100 rounded-full p-2 mr-3">
                 <FolderIcon className="h-5 w-5 text-indigo-600" />
               </div>
               <div>
-                <div className="font-bold text-2xl text-gray-800">{repositories?.length || 0}</div>
-                <div className="text-xs text-gray-500">Repositories</div>
+                <div className="font-bold text-2xl text-gray-800 dark:text-gray-100">{repositories?.length || 0}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Repositories</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="bg-white dark:bg-slate-800 bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
             <div className="flex items-center">
               <div className="bg-blue-100 rounded-full p-2 mr-3">
                 <UserGroupIcon className="h-5 w-5 text-blue-600" />
               </div>
               <div>
-                <div className="font-bold text-2xl text-gray-800">{contributors?.length || 0}</div>
-                <div className="text-xs text-gray-500">Contributors</div>
+                <div className="font-bold text-2xl text-gray-800 dark:text-gray-100">{contributors?.length || 0}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Contributors</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="bg-white dark:bg-slate-800 bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
             <div className="flex items-center">
               <div className="bg-green-100 rounded-full p-2 mr-3">
                 <CheckCircleIcon className="h-5 w-5 text-green-600" />
               </div>
               <div>
-                <div className="font-bold text-2xl text-gray-800">{totalIssues}</div>
-                <div className="text-xs text-gray-500">Resolved Issues</div>
+                <div className="font-bold text-2xl text-gray-800 dark:text-gray-100">{totalIssues}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Resolved Issues</div>
               </div>
             </div>
           </div>
           
-          <div className="bg-white bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
+          <div className="bg-white dark:bg-slate-800 bg-opacity-90 rounded-lg p-4 shadow-sm transition-all hover:shadow-md">
             <div className="flex items-center">
               <div className="bg-amber-100 rounded-full p-2 mr-3">
                 <CodeBracketIcon className="h-5 w-5 text-amber-600" />
               </div>
               <div>
-                <div className="font-bold text-2xl text-gray-800">{totalCommits}</div>
-                <div className="text-xs text-gray-500">Total Commits</div>
+                <div className="font-bold text-2xl text-gray-800 dark:text-gray-100">{totalCommits}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Total Commits</div>
               </div>
             </div>
           </div>
@@ -298,15 +298,15 @@ export default function Dashboard() {
         {/* Side Column */}
         <div className="lg:col-span-1 space-y-8 order-2 lg:order-1">
           {/* Most Active Contributors */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
-              <h3 className="text-sm font-medium text-gray-900">Top Contributors</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50 flex justify-between items-center">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Top Contributors</h3>
               <Link to="/contributors" className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center">
                 View all
                 <ArrowTrendingUpIcon className="ml-1 h-3 w-3" />
               </Link>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-100 dark:divide-slate-700">
               {activeContributors.map(contributor => {
                 const issuesCount = contributor.works.reduce(
                   (acc, work) => acc + (work.issues?.length || 0), 0
@@ -319,7 +319,7 @@ export default function Dashboard() {
                   <Link 
                     key={contributor.id}
                     to={`/contributors/${contributor.id}`}
-                    className="flex items-center px-5 py-3 hover:bg-gray-50 transition-colors group"
+                    className="flex items-center px-5 py-3 hover:bg-gray-50 dark:bg-slate-900/50 transition-colors group"
                   >
                     <img 
                       src={contributor.avatar_url} 
@@ -327,15 +327,15 @@ export default function Dashboard() {
                       className="h-8 w-8 rounded-full ring-1 ring-gray-200 object-cover mr-3" 
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                      <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-indigo-600 transition-colors truncate">
                         {contributor.username}
                       </p>
                       <div className="flex items-center mt-1 space-x-2">
-                        <span className="text-xs text-gray-500 flex items-center">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                           <CheckCircleIcon className="h-3 w-3 mr-0.5 text-green-500" />
                           {issuesCount}
                         </span>
-                        <span className="text-xs text-gray-500 flex items-center">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center">
                           <CodeBracketIcon className="h-3 w-3 mr-0.5 text-indigo-500" />
                           {commitsCount}
                         </span>
@@ -346,7 +346,7 @@ export default function Dashboard() {
                 );
               })}
               {activeContributors.length === 0 && (
-                <div className="px-5 py-4 text-sm text-gray-500 text-center">
+                <div className="px-5 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">
                   No contributors found
                 </div>
               )}
@@ -354,42 +354,42 @@ export default function Dashboard() {
           </div>
           
           {/* Active Repositories */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
-              <h3 className="text-sm font-medium text-gray-900">Active Repositories</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50 flex justify-between items-center">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Active Repositories</h3>
               <Link to="/repositories" className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center">
                 View all
                 <ArrowTrendingUpIcon className="ml-1 h-3 w-3" />
               </Link>
             </div>
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-100 dark:divide-slate-700">
               {activeRepositories.map(repo => (
                 <Link 
                   key={repo.id}
                   to={`/repositories/${repo.id}`}
-                  className="flex flex-col px-5 py-3 hover:bg-gray-50 transition-colors group"
+                  className="flex flex-col px-5 py-3 hover:bg-gray-50 dark:bg-slate-900/50 transition-colors group"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <FolderIcon className="h-4 w-4 text-indigo-500 mr-2 flex-shrink-0" />
-                      <span className="text-sm font-medium text-gray-900 group-hover:text-indigo-600 transition-colors truncate">
+                      <span className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-indigo-600 transition-colors truncate">
                         {repo.name}
                       </span>
                     </div>
                     <ArrowTopRightOnSquareIcon className="h-4 w-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <div className="flex items-center mt-1.5 ml-6 space-x-3">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       {repo.activityCount} activities
                     </span>
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       Updated {formatDate(repo.lastActivity)}
                     </span>
                   </div>
                 </Link>
               ))}
               {activeRepositories.length === 0 && (
-                <div className="px-5 py-4 text-sm text-gray-500 text-center">
+                <div className="px-5 py-4 text-sm text-gray-500 dark:text-gray-400 text-center">
                   No repositories found
                 </div>
               )}
@@ -397,12 +397,12 @@ export default function Dashboard() {
           </div>
           
           {/* Recent Activity Timeline */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Recent Activity</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Recent Activity</h3>
             </div>
             <div className="px-5 py-4">
-              <ol className="relative border-l border-gray-200 ml-3 space-y-6">
+              <ol className="relative border-l border-gray-200 dark:border-slate-700 ml-3 space-y-6">
                 {recentActivity.map((item, idx) => (
                   <li key={idx} className="ml-6">
                     <span className={`absolute flex items-center justify-center w-6 h-6 rounded-full -left-3 ring-4 ring-white ${
@@ -421,11 +421,11 @@ export default function Dashboard() {
                             alt={item.contributor}
                             className="w-4 h-4 rounded-full mr-1"
                           />
-                          <span className="text-xs text-gray-600 hover:text-indigo-600 transition-colors">
+                          <span className="text-xs text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">
                             {item.contributor}
                           </span>
                         </Link>
-                        <time className="block text-xs font-normal leading-none text-gray-500">
+                        <time className="block text-xs font-normal leading-none text-gray-500 dark:text-gray-400">
                           {formatDate(item.date)}
                         </time>
                       </div>
@@ -433,13 +433,13 @@ export default function Dashboard() {
                         href={item.url} 
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block text-sm font-medium text-gray-900 hover:text-indigo-600 hover:underline mt-1"
+                        className="block text-sm font-medium text-gray-900 dark:text-white hover:text-indigo-600 hover:underline mt-1"
                       >
                         {item.summary.length > 60 ? `${item.summary.substring(0, 60)}...` : item.summary}
                       </a>
                       <Link 
                         to={`/repositories/${item.repositoryId}`}
-                        className="text-xs text-gray-500 hover:text-indigo-600 transition-colors flex items-center mt-1"
+                        className="text-xs text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors flex items-center mt-1"
                       >
                         <FolderIcon className="w-3 h-3 mr-1" />
                         {item.repository}
@@ -448,7 +448,7 @@ export default function Dashboard() {
                   </li>
                 ))}
                 {recentActivity.length === 0 && (
-                  <p className="text-sm text-gray-500">No recent activity</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">No recent activity</p>
                 )}
               </ol>
             </div>
@@ -458,30 +458,30 @@ export default function Dashboard() {
         {/* Main Visualization Area */}
         <div className={`lg:col-span-3 order-1 lg:order-2 ${graphZoomed ? 'lg:col-span-4' : ''}`}>
           {/* Graph Container with Controls */}
-          <div className={`bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 ${graphZoomed ? 'h-[800px]' : 'h-[600px]'}`}>
-            <div className="px-5 py-4 border-b border-gray-200 flex justify-between items-center">
+          <div className={`bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300 ${graphZoomed ? 'h-[800px]' : 'h-[600px]'}`}>
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
               <div className="flex items-center">
                 <ChartBarSquareIcon className="h-5 w-5 text-indigo-500 mr-2" />
-                <h2 className="text-lg font-medium text-gray-900">Organization Network</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-white">Organization Network</h2>
               </div>
               <div className="flex items-center space-x-3">
                 <button
                   onClick={refreshGraph}
-                  className="inline-flex items-center text-xs text-gray-600 hover:text-indigo-600 transition-colors"
+                  className="inline-flex items-center text-xs text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors"
                   title="Refresh visualization"
                 >
                   <ArrowPathIcon className="h-4 w-4" />
                 </button>
                 <button
                   onClick={toggleSettings}
-                  className={`inline-flex items-center text-xs ${showSettings ? 'text-indigo-600' : 'text-gray-600 hover:text-indigo-600'} transition-colors`}
+                  className={`inline-flex items-center text-xs ${showSettings ? 'text-indigo-600' : 'text-gray-600 dark:text-gray-300 hover:text-indigo-600'} transition-colors`}
                   title="Visualization settings"
                 >
                   <AdjustmentsHorizontalIcon className="h-4 w-4" />
                 </button>
                 <button
                   onClick={toggleGraphZoom}
-                  className="inline-flex items-center text-xs text-gray-600 hover:text-indigo-600 transition-colors"
+                  className="inline-flex items-center text-xs text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors"
                   title={graphZoomed ? "Reduce graph size" : "Expand graph"}
                 >
                   {graphZoomed ? (
@@ -499,7 +499,7 @@ export default function Dashboard() {
             
             {/* Settings Panel */}
             {showSettings && (
-              <div className="bg-gray-50 px-5 py-3 border-b border-gray-200">
+              <div className="bg-gray-50 dark:bg-slate-900/50 px-5 py-3 border-b border-gray-200 dark:border-slate-700">
                 <div className="flex flex-wrap gap-4">
                   <label className="inline-flex items-center cursor-pointer">
                     <input
@@ -508,8 +508,8 @@ export default function Dashboard() {
                       checked={settings.showLabels}
                       onChange={() => updateSetting('showLabels', !settings.showLabels)}
                     />
-                    <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
-                    <span className="ml-2 text-xs text-gray-700">Show labels</span>
+                    <div className="relative w-9 h-5 bg-gray-200 dark:bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white dark:bg-slate-800 after:border-gray-300 dark:border-slate-600 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                    <span className="ml-2 text-xs text-gray-700 dark:text-gray-200">Show labels</span>
                   </label>
                   <label className="inline-flex items-center cursor-pointer">
                     <input
@@ -518,8 +518,8 @@ export default function Dashboard() {
                       checked={settings.showAllLinks}
                       onChange={() => updateSetting('showAllLinks', !settings.showAllLinks)}
                     />
-                    <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
-                    <span className="ml-2 text-xs text-gray-700">Show all connections</span>
+                    <div className="relative w-9 h-5 bg-gray-200 dark:bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white dark:bg-slate-800 after:border-gray-300 dark:border-slate-600 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                    <span className="ml-2 text-xs text-gray-700 dark:text-gray-200">Show all connections</span>
                   </label>
                   <label className="inline-flex items-center cursor-pointer">
                     <input
@@ -528,8 +528,8 @@ export default function Dashboard() {
                       checked={settings.animated}
                       onChange={() => updateSetting('animated', !settings.animated)}
                     />
-                    <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
-                    <span className="ml-2 text-xs text-gray-700">Animated</span>
+                    <div className="relative w-9 h-5 bg-gray-200 dark:bg-slate-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white dark:bg-slate-800 after:border-gray-300 dark:border-slate-600 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                    <span className="ml-2 text-xs text-gray-700 dark:text-gray-200">Animated</span>
                   </label>
                   <button
                     onClick={refreshGraph}
@@ -547,8 +547,8 @@ export default function Dashboard() {
               {contributors?.length === 0 || repositories?.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center p-8 text-center">
                   <ChartBarIcon className="h-12 w-12 text-gray-300 mb-3" />
-                  <h3 className="text-lg font-medium text-gray-800">No data to visualize</h3>
-                  <p className="mt-1 text-gray-500 max-w-md">
+                  <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">No data to visualize</h3>
+                  <p className="mt-1 text-gray-500 dark:text-gray-400 max-w-md">
                     Add repositories and contributors to see the organization network visualization.
                   </p>
                 </div>
@@ -566,20 +566,20 @@ export default function Dashboard() {
               )}
 
               {/* Graph Legend */}
-              <div className="absolute top-4 right-4 bg-white bg-opacity-80 p-3 rounded-lg shadow-sm border border-gray-100">
-                <div className="text-xs font-medium text-gray-700 mb-2">Legend</div>
+              <div className="absolute top-4 right-4 bg-white dark:bg-slate-800 bg-opacity-80 p-3 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+                <div className="text-xs font-medium text-gray-700 dark:text-gray-200 mb-2">Legend</div>
                 <div className="space-y-1.5">
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full bg-indigo-500 mr-2"></div>
-                    <span className="text-xs text-gray-600">Repository</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">Repository</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                    <span className="text-xs text-gray-600">Contributor</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">Contributor</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-8 h-0.5 bg-gray-300 mr-2"></div>
-                    <span className="text-xs text-gray-600">Connection</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300">Connection</span>
                   </div>
                 </div>
               </div>

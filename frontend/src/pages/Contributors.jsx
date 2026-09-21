@@ -25,22 +25,22 @@ export default function Contributors() {
          <ul
           role="list"
           // Apply styling similar to the second example UI you provided
-          className="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
+          className="divide-y divide-gray-100 dark:divide-slate-700 overflow-hidden bg-white dark:bg-slate-800 shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10 sm:rounded-xl"
         >
           {contributors.map((person) => (
             // Adapt the list item structure from your example
-            <li key={person.id} className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
+            <li key={person.id} className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 dark:bg-slate-900/50 sm:px-6">
               <div className="flex min-w-0 gap-x-4">
-                <img alt={`${person.username} avatar`} src={person.avatar_url} className="size-12 flex-none rounded-full bg-gray-50" />
+                <img alt={`${person.username} avatar`} src={person.avatar_url} className="size-12 flex-none rounded-full bg-gray-50 dark:bg-slate-900/50" />
                 <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
+                  <p className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
                     {/* Link to the contributor detail page */}
                     <Link to={`/contributors/${person.id}`}>
                       <span className="absolute inset-x-0 -top-px bottom-0" />
                       {person.username}
                     </Link>
                   </p>
-                  <p className="mt-1 flex text-xs leading-5 text-gray-500">
+                  <p className="mt-1 flex text-xs leading-5 text-gray-500 dark:text-gray-400">
                      {/* You could show their main summary or link to their GitHub profile */}
                      <a href={person.url} target="_blank" rel="noopener noreferrer" className="relative truncate hover:underline">
                       {person.url}
@@ -54,11 +54,11 @@ export default function Contributors() {
                    <div className="flex gap-5 mt-2">
               <div className="text-center">
                 <div className="text-sm font-semibold">{person.works.reduce((acc, work) => acc + work.issues.length, 0) || 0}</div>
-                <div className="text-xs text-gray-500">Resolved Issues</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Resolved Issues</div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold">{person.works.reduce((acc, work) => acc + work.commits.length, 0) || 0}</div>
-                <div className="text-xs text-gray-500">Commits</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">Commits</div>
               </div>
             </div>
                 </div>

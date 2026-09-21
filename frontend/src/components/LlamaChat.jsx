@@ -122,7 +122,7 @@ const LlamaChat = () => {
     <div className="fixed bottom-6 left-[18vw] inset-x-0 px-4 z-40 pointer-events-none">
       <div className="max-w-3xl mx-auto">
         <div
-          className={`rounded-xl bg-white shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out pointer-events-auto ${
+          className={`rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300 ease-in-out pointer-events-auto ${
             isExpanded ? 'transform translate-y-0' : 'transform translate-y-2'
           }`}
           style={{ boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}
@@ -133,7 +133,7 @@ const LlamaChat = () => {
               {/* Close Button */}
               <button
                 onClick={closeExpanded}
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 p-1 rounded-full hover:bg-gray-100 transition-colors z-10"
+                className="absolute top-2 right-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:text-gray-200 p-1 rounded-full hover:bg-gray-100 dark:bg-slate-700 transition-colors z-10"
                 disabled={isStreaming}
               >
                 <XMarkIcon className="h-5 w-5" />
@@ -153,8 +153,8 @@ const LlamaChat = () => {
                       <LightBulbIcon className="h-5 w-5 text-indigo-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">Ask me about your codebase</h3>
-                      <p className="mt-1 text-sm text-gray-500">
+                      <h3 className="font-medium text-gray-900 dark:text-white">Ask me about your codebase</h3>
+                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                         I can help you understand contributors, repositories, and their relationships.
                         Try asking questions like:
                       </p>
@@ -187,7 +187,7 @@ const LlamaChat = () => {
                           <ChatBubbleLeftEllipsisIcon className="h-4 w-4 text-white" />
                         </div>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">Llama Assistant</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">Llama Assistant</p>
                     </div>
 
                     <div className="markdown-content pl-8 relative">
@@ -215,7 +215,7 @@ const LlamaChat = () => {
                        <div className="mt-4 flex justify-end">
                         <button
                           onClick={resetChat}
-                          className="text-xs text-gray-500 hover:text-indigo-600 transition-colors"
+                          className="text-xs text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors"
                         >
                           Ask another question
                         </button>
@@ -242,7 +242,7 @@ const LlamaChat = () => {
           )}
 
           {/* Input Area */}
-          <form onSubmit={handleSubmit} className="p-3 bg-white relative">
+          <form onSubmit={handleSubmit} className="p-3 bg-white dark:bg-slate-800 relative">
              {/* ... Input field and submit button ... */}
              <div className="flex items-center">
               <div className="flex-grow">
@@ -255,7 +255,7 @@ const LlamaChat = () => {
                   onBlur={handleInputBlur}
                   placeholder="Ask about your codebase..."
                   className={`w-full py-2.5 pl-4 pr-12 rounded-full border ${
-                    isFocused ? 'border-indigo-500 ring-2 ring-indigo-100' : 'border-gray-300'
+                    isFocused ? 'border-indigo-500 ring-2 ring-indigo-100' : 'border-gray-300 dark:border-slate-600'
                   } focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100`}
                   disabled={isStreaming}
                 />

@@ -5,7 +5,7 @@ const CustomTooltip = ({ content, position }) => {
   
   return (
     <div 
-      className="absolute z-50 bg-white shadow-xl rounded-lg p-4 border border-gray-200 max-w-sm"
+      className="absolute z-50 bg-white dark:bg-slate-800 shadow-xl rounded-lg p-4 border border-gray-200 dark:border-slate-700 max-w-sm"
       style={{
         left: `${position.x + 10}px`,
         top: `${position.y + 10}px`,
@@ -35,11 +35,11 @@ const CustomTooltip = ({ content, position }) => {
               <div className="flex gap-5 mt-2">
                 <div className="text-center">
                   <div className="text-sm font-semibold">{content.issueCount || 0}</div>
-                  <div className="text-xs text-gray-500">Issues</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Issues</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-semibold">{content.commitCount || 0}</div>
-                  <div className="text-xs text-gray-500">Commits</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Commits</div>
                 </div>
               </div>
               <p className="text-sm mt-2">{content.summary}</p>

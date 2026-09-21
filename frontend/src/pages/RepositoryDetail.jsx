@@ -60,11 +60,11 @@ export default function RepositoryDetail() {
 
   if (error) {
     return (
-      <div className="rounded-lg bg-gray-50 p-6 text-center">
-        <div className="h-12 w-12 text-gray-500 mx-auto mb-4">⚠️</div>
-        <h3 className="text-lg font-medium text-gray-800">Error loading repository data</h3>
-        <p className="mt-2 text-gray-600">{error}</p>
-        <Link to="/repositories" className="inline-flex items-center mt-4 text-sm font-medium text-gray-600 hover:text-indigo-600">
+      <div className="rounded-lg bg-gray-50 dark:bg-slate-900/50 p-6 text-center">
+        <div className="h-12 w-12 text-gray-500 dark:text-gray-400 mx-auto mb-4">⚠️</div>
+        <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100">Error loading repository data</h3>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">{error}</p>
+        <Link to="/repositories" className="inline-flex items-center mt-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600">
           <ArrowLeftIcon className="mr-1 h-4 w-4" />
           Return to Repositories
         </Link>
@@ -77,10 +77,10 @@ export default function RepositoryDetail() {
 
   if (!repository) {
     return (
-      <div className="text-center py-10 bg-gray-50 rounded-lg">
+      <div className="text-center py-10 bg-gray-50 dark:bg-slate-900/50 rounded-lg">
         <FolderIcon className="h-16 w-16 text-gray-400 mx-auto mb-2" />
-        <h2 className="text-xl font-medium text-gray-900">Repository Not Found</h2>
-        <p className="mt-1 text-gray-500">The repository you're looking for doesn't exist or was removed.</p>
+        <h2 className="text-xl font-medium text-gray-900 dark:text-white">Repository Not Found</h2>
+        <p className="mt-1 text-gray-500 dark:text-gray-400">The repository you're looking for doesn't exist or was removed.</p>
         <Link to="/repositories" className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
           <ArrowLeftIcon className="mr-2 h-4 w-4" aria-hidden="true" />
           Back to Repositories
@@ -132,7 +132,7 @@ export default function RepositoryDetail() {
       <div className="mb-8 flex flex-col md:flex-row md:items-start md:justify-between">
         <div>
           <div className="flex items-center flex-wrap">
-            <h1 className="text-2xl font-bold text-gray-900 mr-3">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mr-3">
               <span className="inline-flex items-center">
                 <FolderIcon className="h-6 w-6 text-indigo-500 mr-2" />
                 {repository.name}
@@ -142,7 +142,7 @@ export default function RepositoryDetail() {
               href={repository.url} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-flex items-center text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+              className="inline-flex items-center text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors"
             >
               <LinkIcon className="h-3.5 w-3.5 mr-1" />
               <span>GitHub</span>
@@ -170,20 +170,20 @@ export default function RepositoryDetail() {
           </div>
         </div>
         
-        <div className="mt-4 md:mt-0 text-sm text-gray-500 flex items-center">
+        <div className="mt-4 md:mt-0 text-sm text-gray-500 dark:text-gray-400 flex items-center">
           <ClockIcon className="h-4 w-4 mr-1 text-gray-400" />
           Last updated: {formatDate(repository.updated_at)}
         </div>
       </div>
 
       {/* Main Summary - First-Class Citizen */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center">
-          <DocumentTextIcon className="h-5 w-5 text-gray-500 mr-2" />
-          <h2 className="text-lg font-medium text-gray-900">Repository Summary</h2>
+      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 mb-8 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex items-center">
+          <DocumentTextIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Repository Summary</h2>
         </div>
         <div className="px-6 py-5">
-          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-gray-700 prose-a:underline hover:prose-a:text-indigo-600">
+          <div className="prose max-w-none prose-headings:font-semibold prose-headings:text-gray-900 dark:text-white prose-p:text-gray-700 dark:text-gray-200 prose-a:text-gray-700 dark:text-gray-200 prose-a:underline hover:prose-a:text-indigo-600">
             <ReactMarkdown>{repository.summary}</ReactMarkdown>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function RepositoryDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         {/* Contributors Section - Left Side */}
         <div className="lg:col-span-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
             <UserGroupIcon className="h-5 w-5 text-indigo-500 mr-2" />
             Contributors
           </h2>
@@ -210,9 +210,9 @@ export default function RepositoryDetail() {
                 const showCommits = expandedSections[`commits-${contributor.id}`];
                 
                 return (
-                  <div key={contributor.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                  <div key={contributor.id} className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
                     {/* Contributor Header */}
-                    <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700 flex justify-between items-center">
                       <Link 
                         to={`/contributors/${contributor.id}`}
                         className="flex items-center group"
@@ -222,7 +222,7 @@ export default function RepositoryDetail() {
                           alt={contributor.username} 
                           className="h-8 w-8 rounded-full ring-1 ring-gray-200 shadow-sm object-cover mr-3" 
                         />
-                        <h3 className="font-medium text-gray-900 group-hover:text-indigo-600 transition-colors flex items-center">
+                        <h3 className="font-medium text-gray-900 dark:text-white group-hover:text-indigo-600 transition-colors flex items-center">
                           {contributor.username}
                           <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </h3>
@@ -242,7 +242,7 @@ export default function RepositoryDetail() {
                     {/* Contributor's Work Summary */}
                     {work && (
                       <div className="px-6 py-4">
-                        <div className="prose prose-sm max-w-none text-gray-700">
+                        <div className="prose prose-sm max-w-none text-gray-700 dark:text-gray-200">
                           <ReactMarkdown>{work.summary}</ReactMarkdown>
                         </div>
                       </div>
@@ -252,12 +252,12 @@ export default function RepositoryDetail() {
                     <div>
                       {/* Issues Section */}
                       {contributorIssues.length > 0 && (
-                        <div className="border-t border-gray-100">
+                        <div className="border-t border-gray-100 dark:border-slate-700">
                           <button 
                             onClick={() => toggleSection('issues', contributor.id)}
                             className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
+                            <span className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-200">
                               <CheckCircleIcon className="h-4 w-4 mr-2 text-green-600" />
                               {contributorIssues.length} Resolved Issue{contributorIssues.length !== 1 ? 's' : ''}
                             </span>
@@ -268,7 +268,7 @@ export default function RepositoryDetail() {
                           </button>
                           
                           {showIssues && (
-                            <div className="px-6 py-3 border-t border-gray-200 divide-y divide-gray-200">
+                            <div className="px-6 py-3 border-t border-gray-200 dark:border-slate-700 divide-y divide-gray-200 dark:divide-slate-700">
                               {contributorIssues.map(issue => (
                                 <div key={issue.id} className="py-4 first:pt-1 last:pb-1 group">
                                   <div className="flex justify-between items-start">
@@ -277,17 +277,17 @@ export default function RepositoryDetail() {
                                         href={issue.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="font-medium text-gray-900 hover:text-indigo-600 group-hover:underline flex items-center"
+                                        className="font-medium text-gray-900 dark:text-white hover:text-indigo-600 group-hover:underline flex items-center"
                                       >
                                         <CheckCircleIcon className="h-4 w-4 mr-1.5 text-green-600" />
                                         <span>{issue.url.split('/').pop()}</span>
                                         <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                                       </a>
-                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600">
+                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600 dark:text-gray-300">
                                         <ReactMarkdown>{issue.summary}</ReactMarkdown>
                                       </div>
                                     </div>
-                                    <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
+                                    <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
                                       {formatDate(issue.updated_at)}
                                     </span>
                                   </div>
@@ -300,12 +300,12 @@ export default function RepositoryDetail() {
                       
                       {/* Commits Section */}
                       {contributorCommits.length > 0 && (
-                        <div className="border-t border-gray-100">
+                        <div className="border-t border-gray-100 dark:border-slate-700">
                           <button 
                             onClick={() => toggleSection('commits', contributor.id)}
                             className="flex justify-between items-center w-full text-left px-6 py-3 transition-colors"
                           >
-                            <span className="flex items-center text-sm font-medium text-gray-700">
+                            <span className="flex items-center text-sm font-medium text-gray-700 dark:text-gray-200">
                               <CodeBracketIcon className="h-4 w-4 mr-2 text-indigo-600" />
                               {contributorCommits.length} Commit{contributorCommits.length !== 1 ? 's' : ''}
                             </span>
@@ -316,7 +316,7 @@ export default function RepositoryDetail() {
                           </button>
                           
                           {showCommits && (
-                            <div className="px-6 py-3 border-t border-gray-200 divide-y divide-gray-200">
+                            <div className="px-6 py-3 border-t border-gray-200 dark:border-slate-700 divide-y divide-gray-200 dark:divide-slate-700">
                               {contributorCommits.map(commit => (
                                 <div key={commit.id} className="py-4 first:pt-1 last:pb-1 group">
                                   <div className="flex justify-between items-start">
@@ -325,17 +325,17 @@ export default function RepositoryDetail() {
                                         href={commit.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="font-medium text-gray-900 hover:text-indigo-600 group-hover:underline flex items-center"
+                                        className="font-medium text-gray-900 dark:text-white hover:text-indigo-600 group-hover:underline flex items-center"
                                       >
                                         <CodeBracketIcon className="h-4 w-4 mr-1.5 text-indigo-600" />
                                         <span>{commit.url.split('/').pop()}</span>
                                         <ArrowTopRightOnSquareIcon className="h-3 w-3 ml-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                                       </a>
-                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600">
+                                      <div className="mt-2 prose prose-sm max-w-none text-gray-600 dark:text-gray-300">
                                         <ReactMarkdown>{commit.summary}</ReactMarkdown>
                                       </div>
                                     </div>
-                                    <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
+                                    <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap flex-shrink-0">
                                       {formatDate(commit.updated_at)}
                                     </span>
                                   </div>
@@ -351,8 +351,8 @@ export default function RepositoryDetail() {
               })}
             </div>
           ) : (
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
-              <p className="text-gray-500">No contributors found for this repository.</p>
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 text-center">
+              <p className="text-gray-500 dark:text-gray-400">No contributors found for this repository.</p>
             </div>
           )}
         </div>
@@ -360,48 +360,48 @@ export default function RepositoryDetail() {
         {/* Activity and Stats - Right Side */}
         <div className="lg:col-span-4">
           {/* Repository Info Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-6">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Repository Information</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-6">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Repository Information</h3>
             </div>
             <div className="px-5 py-4">
-              <dl className="divide-y divide-gray-200">
+              <dl className="divide-y divide-gray-200 dark:divide-slate-700">
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Created</dt>
-                  <dd className="text-sm text-gray-900">{formatDate(repository.created_at)}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Created</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{formatDate(repository.created_at)}</dd>
                 </div>
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Last updated</dt>
-                  <dd className="text-sm text-gray-900">{formatDate(repository.updated_at)}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Last updated</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{formatDate(repository.updated_at)}</dd>
                 </div>
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Repository age</dt>
-                  <dd className="text-sm text-gray-900">{ageDisplay}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Repository age</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{ageDisplay}</dd>
                 </div>
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Contributors</dt>
-                  <dd className="text-sm text-gray-900">{totalContributors}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Contributors</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{totalContributors}</dd>
                 </div>
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Total commits</dt>
-                  <dd className="text-sm text-gray-900">{totalCommits}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Total commits</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{totalCommits}</dd>
                 </div>
                 <div className="py-3 flex justify-between">
-                  <dt className="text-sm font-medium text-gray-500">Issues resolved</dt>
-                  <dd className="text-sm text-gray-900">{totalIssues}</dd>
+                  <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Issues resolved</dt>
+                  <dd className="text-sm text-gray-900 dark:text-white">{totalIssues}</dd>
                 </div>
               </dl>
             </div>
           </div>
           
           {/* Activity Timeline Card */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-200 bg-gray-50">
-              <h3 className="text-sm font-medium text-gray-900">Recent Activity</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden">
+            <div className="px-5 py-4 border-b border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50">
+              <h3 className="text-sm font-medium text-gray-900 dark:text-white">Recent Activity</h3>
             </div>
             <div className="px-5 py-4">
               {/* Show timeline of most recent activities based on dates */}
-              <ol className="relative border-l border-gray-200 ml-3 space-y-6">
+              <ol className="relative border-l border-gray-200 dark:border-slate-700 ml-3 space-y-6">
                 {/* Dynamically generate timeline from all commits and issues */}
                 {[...allCommits, ...allIssues]
                   .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
@@ -435,12 +435,12 @@ export default function RepositoryDetail() {
                                   alt={contributorForItem.username}
                                   className="w-4 h-4 rounded-full mr-1"
                                 />
-                                <span className="text-xs text-gray-600 hover:text-indigo-600 transition-colors">
+                                <span className="text-xs text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">
                                   {contributorForItem.username}
                                 </span>
                               </Link>
                             )}
-                            <time className="block text-xs font-normal leading-none text-gray-500">
+                            <time className="block text-xs font-normal leading-none text-gray-500 dark:text-gray-400">
                               {formatDate(item.updated_at)}
                             </time>
                           </div>
@@ -448,7 +448,7 @@ export default function RepositoryDetail() {
                             href={item.url} 
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block text-sm font-medium text-gray-900 hover:text-indigo-600 hover:underline mt-1"
+                            className="block text-sm font-medium text-gray-900 dark:text-white hover:text-indigo-600 hover:underline mt-1"
                           >
                             {item.summary.length > 60 ? `${item.summary.substring(0, 60)}...` : item.summary}
                           </a>
@@ -458,7 +458,7 @@ export default function RepositoryDetail() {
                   })
                 }
                 {allCommits.length === 0 && allIssues.length === 0 && (
-                  <p className="text-sm text-gray-500">No recent activity</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">No recent activity</p>
                 )}
               </ol>
             </div>
@@ -467,10 +467,10 @@ export default function RepositoryDetail() {
       </div>
       
       {/* Visualization Section - At the end */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-lg font-medium text-gray-900">Repository Network</h2>
-          <p className="mt-1 text-sm text-gray-500">
+      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 overflow-hidden mb-8">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-slate-700">
+          <h2 className="text-lg font-medium text-gray-900 dark:text-white">Repository Network</h2>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
             Visual representation of {repository.name} and its contributors
           </p>
         </div>

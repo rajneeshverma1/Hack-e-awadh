@@ -104,7 +104,7 @@ const ContributorTwinChat = ({ contributor }) => {
   return (
     <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] z-50">
       <div
-        className={`rounded-2xl bg-white shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out`}
+        className={`rounded-2xl bg-white dark:bg-slate-800 shadow-2xl border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300 ease-in-out`}
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 p-4 flex justify-between items-center text-white">
@@ -117,7 +117,7 @@ const ContributorTwinChat = ({ contributor }) => {
           </div>
           <button
             onClick={closeExpanded}
-            className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
+            className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white dark:bg-slate-800/10 transition-colors"
           >
             <XMarkIcon className="h-5 w-5" />
           </button>
@@ -127,24 +127,24 @@ const ContributorTwinChat = ({ contributor }) => {
         <div
           className={`px-5 pt-5 pb-4 transition-all duration-300 ease-in-out ${
             streamingResponse || isStreaming ? 'h-[300px]' : 'h-[120px]'
-          } overflow-y-auto bg-gray-50`}
+          } overflow-y-auto bg-gray-50 dark:bg-slate-900/50`}
           ref={responseRef}
         >
           {!streamingResponse && !isStreaming && !error && (
             <div className="text-center mt-2">
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                 Ask me about my recent commits, design decisions, or the repositories I work on.
               </p>
               <div className="space-y-2">
                 <button 
                   onClick={() => setPrompt("What was your most recent contribution about?")}
-                  className="w-full text-left text-xs bg-white border border-gray-200 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
+                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
                 >
                   "What was your most recent contribution about?"
                 </button>
                 <button 
                   onClick={() => setPrompt("Can you explain the main repository you work on?")}
-                  className="w-full text-left text-xs bg-white border border-gray-200 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
+                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
                 >
                   "Can you explain the main repository you work on?"
                 </button>
@@ -154,7 +154,7 @@ const ContributorTwinChat = ({ contributor }) => {
 
           {/* Streaming Response */}
           {(streamingResponse || isStreaming) && (
-            <div className="prose prose-sm max-w-none text-gray-800">
+            <div className="prose prose-sm max-w-none text-gray-800 dark:text-gray-100">
               <div className="markdown-content">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                   {streamingResponse}
@@ -175,7 +175,7 @@ const ContributorTwinChat = ({ contributor }) => {
         </div>
 
         {/* Input Area */}
-        <form onSubmit={handleSubmit} className="p-3 bg-white border-t border-gray-100">
+        <form onSubmit={handleSubmit} className="p-3 bg-white dark:bg-slate-800 border-t border-gray-100 dark:border-slate-700">
           <div className="flex items-center">
             <div className="relative flex-grow">
               <input
@@ -187,8 +187,8 @@ const ContributorTwinChat = ({ contributor }) => {
                 onBlur={handleInputBlur}
                 placeholder={`Message ${contributor.username}...`}
                 className={`w-full py-2.5 pl-4 pr-12 rounded-full border ${
-                  isFocused ? 'border-indigo-500 ring-2 ring-indigo-100' : 'border-gray-200 bg-gray-50'
-                } focus:outline-none focus:bg-white text-sm transition-all`}
+                  isFocused ? 'border-indigo-500 ring-2 ring-indigo-100' : 'border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900/50'
+                } focus:outline-none focus:bg-white dark:bg-slate-800 text-sm transition-all`}
                 disabled={isStreaming}
               />
               <button
@@ -197,7 +197,7 @@ const ContributorTwinChat = ({ contributor }) => {
                 className={`absolute right-1 top-1 bottom-1 p-2 rounded-full ${
                   prompt.trim() && !isStreaming
                     ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-200'
-                    : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-gray-100 dark:bg-slate-700 text-gray-400 cursor-not-allowed'
                 } transition-all flex items-center justify-center`}
               >
                 <PaperAirplaneIcon className="h-4 w-4 transform -rotate-45 ml-0.5" />
