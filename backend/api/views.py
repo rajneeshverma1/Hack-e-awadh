@@ -60,6 +60,7 @@ def generate_openai_stream(system_prompt, user_prompt):
         yield f"\n\nAn unexpected error occurred: {str(e)}"
 
 def get_system_prompt():
+    """Returns the primary system prompt for the LLM."""
     return """
     You are a helpful assistant that helps engineers, product managers and managers understand a codebase of multiple repositories.
     You will be given a list of repositiories with a description, as well as a list of contributors with their contributions.
