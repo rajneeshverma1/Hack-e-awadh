@@ -81,6 +81,11 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 
 4.  **Access the App:** Open your browser to the frontend URL (e.g., `http://localhost:5173`).
 
+## 🌍 Deployment
+
+- **Frontend**: Designed for Vercel/Netlify.
+- **Backend**: Ready for Render/Railway.
+
 ## 🤝 Contributors
 
 *   Rajneesh Verma - [GitHub](https://github.com/rajneeshverma1)
