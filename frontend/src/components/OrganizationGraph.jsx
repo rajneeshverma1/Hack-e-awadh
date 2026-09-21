@@ -72,6 +72,9 @@ const getLayoutedElements = async (nodes, edges, options = {}) => {
 // --- End ELK Layout Function ---
 
 
+/**
+ * Renders a force-directed graph of repositories and contributors
+ */
 const OrganizationGraph = ({ repositories, contributors }) => {
     // Use initial empty state, layout will populate it
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
