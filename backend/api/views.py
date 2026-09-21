@@ -189,6 +189,7 @@ except Exception as e:
     openai_client = None
 
 def get_twin_system_prompt(contributor_data, repo_data):
+    """Constructs the prompt for the Digital Twin feature."""
     username = contributor_data.get('username', 'Developer')
     
     # Collect context from their works
