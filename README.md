@@ -93,6 +93,10 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 ## Acknowledgements
 
 *   Powered by **Meta Llama**.
+## Support
+
+For any questions or issues, please open a GitHub issue.
+
 ## License
 
 This project is licensed under CC BY-NC 4.0. No commercial use allowed without explicit permission.
