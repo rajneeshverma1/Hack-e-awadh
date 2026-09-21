@@ -180,7 +180,7 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto pb-4">
         <div className="flex flex-col items-center justify-center min-h-[60vh]">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-500 mb-4"></div>
           <h3 className="text-lg font-medium text-gray-800">Loading Organization Data</h3>
@@ -192,7 +192,7 @@ export default function Dashboard() {
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto pb-4">
         <div className="rounded-lg bg-red-50 p-8 text-center">
           <div className="h-12 w-12 text-red-500 mx-auto mb-4">⚠️</div>
           <h3 className="text-xl font-medium text-gray-800">Error loading dashboard data</h3>
