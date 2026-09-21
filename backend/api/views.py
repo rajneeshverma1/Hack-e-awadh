@@ -179,3 +179,81 @@ def llm_stream_view(request):
         # Catch potential errors during generator setup (though most are handled inside)
         print(f"Error setting up stream view: {e}")
         return JsonResponse({"error": f"Failed to start stream: {str(e)}"}, status=500)
+
+# --- Digital Twin Chat View ---
+try:
+    openai_client = OpenAI(api_key=settings.OPENAI_API_KEY)
+except Exception as e:
+    print(f"Error initializing generic OpenAI client: {e}")
+    openai_client = None
+
+def get_twin_system_prompt(contributor_data, repo_data):
+    username = contributor_data.get('username', 'Developer')
+    
+    # Collect context from their works
+    works_context = []
+    works = contributor_data.get('works', [])
+    for work in works:
+        repo_id = work.get('repository')
+        repo_name = next((r['name'] for r in repo_data if r['id'] == repo_id), "Unknown Repo")
+        works_context.append(f"Repository: {repo_name} - Summary: {work.get('summary', '')}")
+        
+    works_str = "\n".join(works_context)
+
+    return f"""You are the Digital Twin (AI clone) of the software engineer {username}.
+You are an expert on the code you have written.
+Here is a summary of your recent work and contributions:
+{works_str}
+
+Your goal is to answer questions about the codebase as if you are {username}.
+Be concise, helpful, and speak in the first person ("I built this...", "My recent commit...").
+Format your responses in markdown."""
+
+def generate_twin_stream(system_prompt, user_prompt):
+    if not openai_client:
+        yield "Error: OpenAI client not initialized. Check OPENAI_API_KEY."
+        return
+    if not system_prompt or not user_prompt:
+        yield "Error: No prompt provided."
+        return
+
+    try:
+        stream = openai_client.chat.completions.create(
+            model="gpt-3.5-turbo", # You can use gpt-4o-mini if available
+            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
+            stream=True,
+        )
+        for chunk in stream:
+            content = chunk.choices[0].delta.content
+            if content is not None:
+                yield content
+
+    except APIError as e:
+        yield f"\n\nError communicating with OpenAI API: {e.message}"
+    except Exception as e:
+        yield f"\n\nAn unexpected error occurred: {str(e)}"
+
+@api_view(['POST'])
+def twin_stream_view(request):
+    user_question = request.data.get('prompt')
+    contributor_id = request.data.get('contributor_id')
+
+    if not user_question or not contributor_id:
+        return HttpResponseBadRequest("Missing 'prompt' or 'contributor_id'.")
+
+    # Fetch data to build context
+    data_serializer = DataSerializer().to_representation(DataSerializer())
+    contributors_data = data_serializer.get('contributors', [])
+    repo_data = data_serializer.get('repositories', [])
+    
+    contributor = next((c for c in contributors_data if str(c.get('id')) == str(contributor_id)), None)
+    if not contributor:
+        return JsonResponse({"error": "Contributor not found"}, status=404)
+
+    system_prompt = get_twin_system_prompt(contributor, repo_data)
+    
+    try:
+        stream_generator = generate_twin_stream(system_prompt, user_question)
+        return StreamingHttpResponse(stream_generator, content_type='text/plain; charset=utf-8')
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
