@@ -2,14 +2,16 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
+const getInitialTheme = () => {
+  const saved = localStorage.getItem('darkMode');
+  if (saved !== null) {
+    return JSON.parse(saved);
+  }
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
+
 export function ThemeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('darkMode');
-    if (saved !== null) {
-      return JSON.parse(saved);
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
