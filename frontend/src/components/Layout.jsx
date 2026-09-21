@@ -217,7 +217,7 @@ export default function Layout() {
                                     >
                                         <img
                                             alt="User Avatar"
-                                            src={user.imageUrl} // Use your user image (llama)
+                                            src={user.imageUrl} loading="lazy" // Use your user image (llama)
                                             className="size-8 rounded-full bg-gray-800" // Style from new example
                                         />
                                         <span className="sr-only">Your profile</span>
@@ -273,7 +273,7 @@ export default function Layout() {
                         <div className="flex items-center gap-x-3">
                             <img
                                 alt="User Avatar"
-                                src={user.imageUrl}
+                                src={user.imageUrl} loading="lazy"
                                 className="size-8 rounded-full bg-gray-800 ring-2 ring-indigo-500/20"
                             />
                             <span className="hidden sm:inline-block text-sm font-semibold text-gray-900 dark:text-white">
