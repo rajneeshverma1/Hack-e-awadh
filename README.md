@@ -100,3 +100,5 @@ For any questions or issues, please open a GitHub issue.
 ## License
 
 This project is licensed under CC BY-NC 4.0. No commercial use allowed without explicit permission.
+
+- **Theme Mode**: Full Light and Dark Mode toggle support.
