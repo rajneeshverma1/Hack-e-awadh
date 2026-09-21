@@ -122,7 +122,7 @@ const LlamaChat = () => {
     <div className="fixed bottom-6 left-[18vw] inset-x-0 px-4 z-40 pointer-events-none">
       <div className="max-w-3xl mx-auto">
         <div
-          className={`rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300 ease-in-out pointer-events-auto ${
+          className={`rounded-xl bg-white dark:bg-slate-800 shadow-lg border border-gray-200 dark:border-slate-700/80 shadow-lg overflow-hidden transition-all duration-300 ease-in-out pointer-events-auto ${
             isExpanded ? 'transform translate-y-0' : 'transform translate-y-2'
           }`}
           style={{ boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}
