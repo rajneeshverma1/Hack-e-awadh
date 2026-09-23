@@ -1,3 +1,4 @@
+/** Custom Tooltip component for ReactFlow nodes */
 import React from 'react';
 
 const CustomTooltip = ({ content, position }) => {
