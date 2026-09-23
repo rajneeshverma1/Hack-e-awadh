@@ -113,3 +113,7 @@ Vercel will build your React application and provide you with a live, production
 
 ### 6. Environment Checklist
 - Ensure `OPENAI_API_KEY` and `GITHUB_TOKEN` are populated in production settings.
+
+### 7. Release Notes (v1.1.1)
+- Added full Light/Dark mode support across all components.
+- Resilient AI stream generation.
