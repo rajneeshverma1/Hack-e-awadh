@@ -20,7 +20,7 @@ import {
   ArrowTrendingUpIcon,
 } from '@heroicons/react/20/solid';
 
-// Format dates nicely
+// Helper function: Format dates for dashboard timeline
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return new Intl.DateTimeFormat('en-US', { 
