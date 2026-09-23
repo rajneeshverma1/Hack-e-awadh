@@ -110,3 +110,6 @@ Vercel will build your React application and provide you with a live, production
 ### 5. Theme Switching (Light/Dark Mode)
 - **Top Header Toggle**: Click the ☀️ / 🌙 theme toggle button located on the top header navbar.
 - **Instant Persistence**: Your preference is saved locally and applies across all pages seamlessly.
+
+### 6. Environment Checklist
+- Ensure `OPENAI_API_KEY` and `GITHUB_TOKEN` are populated in production settings.
