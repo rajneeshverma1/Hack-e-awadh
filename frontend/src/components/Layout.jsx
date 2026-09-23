@@ -230,7 +230,7 @@ export default function Layout() {
                 </div>
 
                 {/* Top Header Navbar */}
-                <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md px-4 shadow-xs sm:px-6 lg:px-8 lg:ml-72 transition-colors duration-300">
+                <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-sm px-4 shadow-xs sm:px-6 lg:px-8 lg:ml-72 transition-colors duration-300">
                     <div className="flex items-center gap-x-4">
                         <button
                             type="button"
