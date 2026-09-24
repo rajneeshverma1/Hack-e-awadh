@@ -91,10 +91,12 @@ const ContributorTwinChat = ({ contributor }) => {
     return (
       <button 
         onClick={() => setIsExpanded(true)}
-        className="fixed bottom-6 right-6 z-50 p-4 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 hover:scale-105 transition-all flex items-center justify-center group"
+        aria-label={`Chat with ${contributor.username}'s AI Digital Twin`}
+        title={`Open AI Digital Twin chat for ${contributor.username}`}
+        className="fixed bottom-6 right-6 z-50 p-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center group border border-indigo-400/30 backdrop-blur-md"
       >
-        <ChatBubbleBottomCenterTextIcon className="h-6 w-6" />
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ml-0 group-hover:ml-2">
+        <ChatBubbleBottomCenterTextIcon className="h-6 w-6 transform group-hover:rotate-12 transition-transform duration-300" />
+        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ml-0 group-hover:ml-2 text-xs font-semibold tracking-wide">
           Chat with {contributor.username}'s Twin
         </span>
       </button>
@@ -102,22 +104,23 @@ const ContributorTwinChat = ({ contributor }) => {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] z-50">
+    <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
       <div
-        className={`rounded-2xl bg-white dark:bg-slate-800 shadow-2xl border border-gray-200 dark:border-slate-700 overflow-hidden transition-all duration-300 ease-in-out`}
+        className={`rounded-2xl bg-white/95 dark:bg-slate-800/95 backdrop-blur-lg shadow-2xl border border-gray-200/80 dark:border-slate-700/80 overflow-hidden transition-all duration-300 ease-in-out`}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-indigo-800 p-4 flex justify-between items-center text-white">
+        <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 p-4 flex justify-between items-center text-white shadow-sm">
           <div className="flex items-center space-x-3">
-            <img src={contributor.avatar_url} alt={contributor.username} className="w-8 h-8 rounded-full border-2 border-white/30" />
+            <img src={contributor.avatar_url} alt={contributor.username} className="w-8 h-8 rounded-full border-2 border-white/40 shadow-sm" />
             <div>
-              <h3 className="font-semibold text-sm leading-tight">{contributor.username}</h3>
-              <span className="text-[10px] text-indigo-100 uppercase tracking-wider font-semibold">Digital Twin (AI)</span>
+              <h3 className="font-semibold text-sm leading-tight text-white">{contributor.username}</h3>
+              <span className="text-[10px] text-indigo-100 uppercase tracking-wider font-semibold">Digital Twin (AI Persona)</span>
             </div>
           </div>
           <button
             onClick={closeExpanded}
-            className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white dark:bg-slate-800/10 transition-colors"
+            aria-label="Close Digital Twin Chat"
+            className="text-white/70 hover:text-white p-1 rounded-full hover:bg-white/15 transition-colors focus:outline-none"
           >
             <XMarkIcon className="h-5 w-5" />
           </button>
