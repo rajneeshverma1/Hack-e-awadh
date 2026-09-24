@@ -77,6 +77,13 @@ Commit these changes and push to GitHub.
    - `GITHUB_TOKEN`: Your GitHub PAT
 7. Click **Create Web Service**. Wait a few minutes for it to deploy, and copy the provided `.onrender.com` URL.
 
+### 3. Digital Twin Streaming & Proxy Configuration
+To ensure real-time chunked streaming for `/api/twin_stream/` in production:
+- **Gunicorn Workers**: Use `--timeout 120` or `--worker-class gevent` if running long-lived streaming completions.
+- **Nginx / Reverse Proxy**: Disable HTTP response buffering (`proxy_buffering off;` and `X-Accel-Buffering: no`) so streaming tokens reach the frontend without delay.
+- **CORS Configuration**: Ensure `CORS_ALLOW_HEADERS` allows `Content-Type` and `Authorization` headers for POST streaming requests.
+
+
 ---
 
 ## Part 3: Deploying the Frontend (React/Vite)
