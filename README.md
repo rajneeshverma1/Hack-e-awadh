@@ -66,6 +66,29 @@ When a user initiates a chat session, the backend gathers relevant contextual te
 * **Interactive Prompt Chips**: Quick action buttons allow users to send predefined queries instantly.
 * **Responsive Dark/Light Layout**: Full Tailwind CSS adaptation matching global theme state.
 
+#### 4. End-to-End Execution Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Engineer / Manager
+    participant UI as ContributorTwinChat (React)
+    participant API as Django Views (twin_stream_view)
+    participant DB as DataSerializer / GitHub DB
+    participant LLM as Meta Llama / OpenAI API
+
+    User->>UI: Selects Contributor & sends prompt
+    UI->>API: POST /api/twin_stream/ (contributor_id, prompt)
+    API->>DB: Query contributor summary, commits, issues & repos
+    DB-->>API: Return contributor telemetry
+    API->>API: get_twin_system_prompt() -> Construct 1st-person system prompt
+    API->>LLM: Stream completion request (gpt-4o-mini / Llama)
+    LLM-->>API: Yield stream chunks
+    API-->>UI: Chunked StreamingHttpResponse (text/plain)
+    UI-->>User: Real-time Markdown token rendering with typing indicator
+```
+
+
 
 
 ## 🛠 Tech Stack
