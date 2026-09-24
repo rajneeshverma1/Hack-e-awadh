@@ -231,10 +231,16 @@ You have full memory of your commits, pull requests, code refactorings, and arch
 
 def generate_twin_stream(system_prompt, user_prompt):
     if not openai_client and not client:
-        fallback_msg = "Hey! I'm the Digital Twin of this contributor. I have been actively pushing commits to the codebase, maintaining documentation, and building core features!"
-        for word in fallback_msg.split():
+        fallback_msg = (
+            "Hello! I am the **Digital Twin** (AI Persona) for this engineer.\n\n"
+            "Here is what I can share based on my recent codebase contributions:\n"
+            "* **Core Focus**: Actively maintaining repository architecture, pull requests, and commit logs.\n"
+            "* **Architecture & Code**: I specialize in modular design patterns, reactive state management, and API stability.\n\n"
+            "Feel free to ask me specifically about my latest pull requests, bug fixes, or design rationale!"
+        )
+        for word in fallback_msg.split(" "):
             yield word + " "
-            time.sleep(0.04)
+            time.sleep(0.03)
         return
 
     active_client = openai_client or client
@@ -251,10 +257,13 @@ def generate_twin_stream(system_prompt, user_prompt):
 
     except Exception as e:
         print(f"Twin API Error: {e}")
-        fallback_msg = "Hey! I'm the Digital Twin of this contributor. My recent work includes major codebase updates and feature implementations."
-        for word in fallback_msg.split():
+        fallback_msg = (
+            "Hi there! As the **Digital Twin** persona, I am analyzing my commit telemetry.\n\n"
+            "My primary contributions involve feature enhancements, component refactoring, and documentation updates across active organization repos."
+        )
+        for word in fallback_msg.split(" "):
             yield word + " "
-            time.sleep(0.04)
+            time.sleep(0.03)
 
 @api_view(['POST'])
 def twin_stream_view(request):
