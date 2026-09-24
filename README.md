@@ -60,6 +60,13 @@ When a user initiates a chat session, the backend gathers relevant contextual te
 3. **Commit & Issue History**: Ingests recent commit messages, solved GitHub issues, and PR context.
 4. **Persona Framing**: Enforces first-person persona execution ("I built...", "In my recent commit...").
 
+#### 3. Frontend Chat Component (`ContributorTwinChat.jsx`)
+* **Floating Widget Integration**: Embedded inside [ContributorDetail.jsx](file:///Users/apple/Desktop/llama/frontend/src/pages/ContributorDetail.jsx) with fixed bottom-right positioning.
+* **Readable Streams Handler**: Uses standard Fetch API `response.body.getReader()` with `TextDecoder` to stream markdown text tokens in real time.
+* **Interactive Prompt Chips**: Quick action buttons allow users to send predefined queries instantly.
+* **Responsive Dark/Light Layout**: Full Tailwind CSS adaptation matching global theme state.
+
+
 
 ## 🛠 Tech Stack
 
