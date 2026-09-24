@@ -131,22 +131,32 @@ const ContributorTwinChat = ({ contributor }) => {
           ref={responseRef}
         >
           {!streamingResponse && !isStreaming && !error && (
-            <div className="text-center mt-2">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-                Ask me about my recent commits, design decisions, or the repositories I work on.
+            <div className="text-center mt-1">
+              <div className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+                Digital Twin Online
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                Ask me about my recent commits, design decisions, or codebase features!
               </p>
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <button 
                   onClick={() => setPrompt("What was your most recent contribution about?")}
-                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
+                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-400 hover:text-indigo-600 transition-colors shadow-sm dark:text-gray-200"
                 >
-                  "What was your most recent contribution about?"
+                  💬 "What was your most recent contribution about?"
                 </button>
                 <button 
-                  onClick={() => setPrompt("Can you explain the main repository you work on?")}
-                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
+                  onClick={() => setPrompt("Can you explain the architecture of the repository you work on?")}
+                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-400 hover:text-indigo-600 transition-colors shadow-sm dark:text-gray-200"
                 >
-                  "Can you explain the main repository you work on?"
+                  ⚡ "Can you explain the repository architecture?"
+                </button>
+                <button 
+                  onClick={() => setPrompt("Which PRs or issues did you recently resolve?")}
+                  className="w-full text-left text-xs bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 p-2 rounded-lg hover:border-indigo-400 hover:text-indigo-600 transition-colors shadow-sm dark:text-gray-200"
+                >
+                  🔧 "Which PRs or issues did you recently resolve?"
                 </button>
               </div>
             </div>
