@@ -88,6 +88,12 @@ sequenceDiagram
     UI-->>User: Real-time Markdown token rendering with typing indicator
 ```
 
+#### 5. Privacy, Security & Fallback Mechanics
+* **Data Privacy**: Telemetry passed to the Digital Twin prompt includes only public/authorized repository commit metadata and issue summaries within the organization.
+* **Graceful Degradation**: If an LLM provider key (`OPENAI_API_KEY` or `LLAMA_API_KEY`) is offline, the backend stream generator yields a pre-formatted fallback response without throwing a 500 error.
+* **Persona Boundaries**: The twin is strictly scoped to the engineer's domain. Queries outside their contribution scope trigger automatic referral to the relevant repository owner.
+
+
 
 
 
