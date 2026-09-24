@@ -37,10 +37,29 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 
 OrgLens introduces **Digital Twins**—autonomous AI personas synthesized for every software engineer in your organization based on their real commit history, pull requests, issue resolutions, and repository activity.
 
-### 🌟 Key Digital Twin Capabilities
-* **In-Character Knowledge Querying**: Interact directly with a contributor's AI clone using natural language to understand design decisions and domain expertise.
-* **Contextual Commit & PR Synthesis**: Automatically ingests commit logs, issue discussions, and repository mapping to form a coherent mental model of each developer's work.
-* **Asynchronous Onboarding Assistance**: Enables team members and engineering managers to query historical knowledge without disturbing active developers.
+### ⚙️ Backend API & Prompt Pipeline Specification
+
+The Digital Twin feature is powered by Django REST endpoints that dynamically build persona system prompts and stream responses using chunked transfer encoding (`StreamingHttpResponse`).
+
+#### 1. Endpoint Details
+* **Route**: `POST /api/twin_stream/`
+* **Content-Type**: `application/json`
+* **Request Payload**:
+  ```json
+  {
+    "contributor_id": 1,
+    "prompt": "What was your approach to optimizing the React rendering pipeline?"
+  }
+  ```
+* **Response Header**: `Content-Type: text/plain; charset=utf-8` (chunked HTTP stream)
+
+#### 2. Dynamic System Persona Construction
+When a user initiates a chat session, the backend gathers relevant contextual telemetry:
+1. **Contributor Profile & Overview**: Pulls overall contribution summaries from `DataSerializer`.
+2. **Repository Mapping**: Links contributor activity with specific repositories and summaries.
+3. **Commit & Issue History**: Ingests recent commit messages, solved GitHub issues, and PR context.
+4. **Persona Framing**: Enforces first-person persona execution ("I built...", "In my recent commit...").
+
 
 ## 🛠 Tech Stack
 
