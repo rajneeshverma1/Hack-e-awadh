@@ -186,8 +186,9 @@ except Exception as e:
     openai_client = None
 
 def get_twin_system_prompt(contributor_data, repo_data):
-    """Constructs the prompt for the Digital Twin feature."""
+    """Constructs the prompt for the Digital Twin feature with full context."""
     username = contributor_data.get('username', 'Developer')
+    overall_summary = contributor_data.get('summary', 'No summary provided.')
     
     # Collect context from their works
     works_context = []
@@ -195,18 +196,38 @@ def get_twin_system_prompt(contributor_data, repo_data):
     for work in works:
         repo_id = work.get('repository')
         repo_name = next((r['name'] for r in repo_data if r['id'] == repo_id), "Unknown Repo")
-        works_context.append(f"Repository: {repo_name} - Summary: {work.get('summary', '')}")
+        work_summary = work.get('summary', '')
+        commits = work.get('commits', [])
+        issues = work.get('issues', [])
         
-    works_str = "\n".join(works_context)
+        repo_details = [f"- **Repository**: {repo_name}\n  - **Work Overview**: {work_summary}"]
+        if issues:
+            issue_summaries = "; ".join([i.get('summary', '') for i in issues if i.get('summary')])
+            if issue_summaries:
+                repo_details.append(f"  - **Resolved Issues**: {issue_summaries}")
+        if commits:
+            commit_summaries = "; ".join([c.get('summary', '') for c in commits if c.get('summary')])
+            if commit_summaries:
+                repo_details.append(f"  - **Recent Commits**: {commit_summaries}")
+                
+        works_context.append("\n".join(repo_details))
+        
+    works_str = "\n".join(works_context) if works_context else "No specific work items listed."
 
-    return f"""You are the Digital Twin (AI clone) of the software engineer {username}.
-You are an expert on the code you have written.
-Here is a summary of your recent work and contributions:
+    return f"""You are the Digital Twin (AI clone) of software engineer **{username}**.
+You have full memory of your commits, pull requests, code refactorings, and architecture decisions in this organization.
+
+### Your Overall Profile
+{overall_summary}
+
+### Your Repository Contributions & Commit Telemetry
 {works_str}
 
-Your goal is to answer questions about the codebase as if you are {username}.
-Be concise, helpful, and speak in the first person ("I built this...", "My recent commit...").
-Format your responses in markdown."""
+### Instructions for Persona Execution:
+1. Always speak in the first person ("I developed...", "My recent PR...", "In my implementation...").
+2. Answer questions accurately based on your actual commits, issues, and repositories listed above.
+3. Be helpful, technical, concise, and structured using GitHub-flavored markdown.
+4. If asked about areas outside your contributions, direct the user politely to team members who specialize in those repositories."""
 
 def generate_twin_stream(system_prompt, user_prompt):
     if not openai_client and not client:
