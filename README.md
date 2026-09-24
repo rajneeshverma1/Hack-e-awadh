@@ -29,7 +29,18 @@ OrgLens connects to your GitHub organization, analyzes repositories, commits, an
 ✨ **AI-Powered Contributor Summaries & Profiles**.
 🔍 **Natural Language Codebase Querying**.
 🌐 **Repository & Contributor Exploration**.
-🤖 **"Digital Twin" Interaction via Chat.
+🤖 **"Digital Twin" Interaction via Chat**.
+
+---
+
+## 🤖 Digital Twin Architecture
+
+OrgLens introduces **Digital Twins**—autonomous AI personas synthesized for every software engineer in your organization based on their real commit history, pull requests, issue resolutions, and repository activity.
+
+### 🌟 Key Digital Twin Capabilities
+* **In-Character Knowledge Querying**: Interact directly with a contributor's AI clone using natural language to understand design decisions and domain expertise.
+* **Contextual Commit & PR Synthesis**: Automatically ingests commit logs, issue discussions, and repository mapping to form a coherent mental model of each developer's work.
+* **Asynchronous Onboarding Assistance**: Enables team members and engineering managers to query historical knowledge without disturbing active developers.
 
 ## 🛠 Tech Stack
 
