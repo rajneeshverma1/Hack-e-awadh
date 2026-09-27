@@ -37,12 +37,16 @@ class DataSerializer(serializers.Serializer):
     contributors = ContributorSerializer(many=True, read_only=True)
 
     def to_representation(self, instance):
-        # Assuming 'instance' is not a single object but a way to access all data.
-        # This serializer might need to be used differently, perhaps in a view
-        # where you explicitly pass the querysets.
+        """
+        Optimized representation fetching with prefetch_related to eliminate N+1 queries.
+        """
+        contributors_qs = Contributor.objects.all().prefetch_related(
+            'works__issues',
+            'works__commits'
+        )
         return {
             'repositories': RepositorySerializer(Repository.objects.all(), many=True).data,
-            'contributors': ContributorSerializer(Contributor.objects.all(), many=True).data
+            'contributors': ContributorSerializer(contributors_qs, many=True).data
         }
 
     # If this serializer is meant to serialize a specific object that holds
