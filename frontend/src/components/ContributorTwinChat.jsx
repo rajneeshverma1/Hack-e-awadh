@@ -184,7 +184,17 @@ const ContributorTwinChat = ({ contributor }) => {
 
           {/* Streaming Response */}
           {(streamingResponse || isStreaming) && (
-            <div className="prose prose-sm max-w-none text-gray-800 dark:text-gray-100">
+            <div className="prose prose-sm max-w-none text-gray-800 dark:text-gray-100 relative group">
+              <div className="flex justify-end mb-1">
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(streamingResponse)}
+                  className="text-[10px] font-medium text-indigo-600 dark:text-indigo-400 hover:underline px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-900/40"
+                  title="Copy response to clipboard"
+                >
+                  📋 Copy Text
+                </button>
+              </div>
               <div className="markdown-content">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                   {streamingResponse}
