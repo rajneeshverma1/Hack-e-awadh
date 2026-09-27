@@ -12,24 +12,44 @@ export const DataProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Function to fetch data (currently uses mock, prepared for API)
+  // Function to fetch data with localStorage cache support
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
+
+    // Try loading from localStorage cache first for fast initial load
+    const cachedRepos = localStorage.getItem('cached_repositories');
+    const cachedContribs = localStorage.getItem('cached_contributors');
+    if (cachedRepos && cachedContribs) {
+      try {
+        setRepositories(JSON.parse(cachedRepos));
+        setContributors(JSON.parse(cachedContribs));
+      } catch (err) {
+        console.warn('Failed parsing cached telemetry:', err);
+      }
+    }
+
     try {
-      const backendUrl = 'http://localhost:8000/api/get_data/'; // Replace with your actual API endpoint
+      const backendUrl = 'http://localhost:8000/api/get_data/';
       const response = await fetch(backendUrl);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setRepositories(data.repositories || []);
-      setContributors(data.contributors || []);
+      const repos = data.repositories || [];
+      const contribs = data.contributors || [];
+      setRepositories(repos);
+      setContributors(contribs);
+
+      // Persist telemetry to local cache
+      localStorage.setItem('cached_repositories', JSON.stringify(repos));
+      localStorage.setItem('cached_contributors', JSON.stringify(contribs));
     } catch (e) {
-      console.error("Failed to fetch from backend, using mock data:", e);
-      // Fallback to mock data
-      setRepositories(mockData.repositories || []);
-      setContributors(mockData.contributors || []);
+      console.error("Failed to fetch from backend, using fallback data:", e);
+      if (!cachedRepos || !cachedContribs) {
+        setRepositories(mockData.repositories || []);
+        setContributors(mockData.contributors || []);
+      }
     } finally {
       setIsLoading(false);
     }
