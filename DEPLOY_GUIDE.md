@@ -118,9 +118,16 @@ Vercel will build your React application and provide you with a live, production
 - **Top Header Toggle**: Click the ☀️ / 🌙 theme toggle button located on the top header navbar.
 - **Instant Persistence**: Your preference is saved locally and applies across all pages seamlessly.
 
-### 6. Environment Checklist
+### 6. Production Security Hardening Checklist
+- **Django Security**: Enable `SECURE_SSL_REDIRECT = True`, `SESSION_COOKIE_SECURE = True`, and `CSRF_COOKIE_SECURE = True` when running over HTTPS.
+- **Content Security Policy**: Add CSP headers to restrict inline script injection in production environments.
+- **API Secret Rotation**: Never check in raw API keys to Git. Use environment variable providers on Render/Vercel.
+
+### 7. Environment Checklist
 - Ensure `OPENAI_API_KEY` and `GITHUB_TOKEN` are populated in production settings.
 
-### 7. Release Notes (v1.1.1)
-- Added full Light/Dark mode support across all components.
-- Resilient AI stream generation.
+### 8. Release Notes (v1.2.0)
+- Added AbortController stream cancellation for Digital Twin chats.
+- Implemented localStorage caching for instant telemetry rendering.
+- Enhanced ELK layout graph node styling and responsiveness.
+
