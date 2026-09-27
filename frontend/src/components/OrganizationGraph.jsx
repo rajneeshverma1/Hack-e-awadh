@@ -189,10 +189,11 @@ const OrganizationGraph = ({ repositories, contributors }) => {
     // }, [fitView]); // Include fitView if you keep onInit
 
     return (
-        <div className="graph-container relative w-full h-[70vh] rounded-lg bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden">
+        <div className="graph-container relative w-full h-[70vh] rounded-xl bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50/40 dark:from-slate-900 dark:via-slate-800/80 dark:to-slate-900 shadow-lg border border-gray-200/80 dark:border-slate-700/80 overflow-hidden transition-all duration-300">
              {isLayouting && (
-                 <div style={{ position: 'absolute', top: 10, left: 10, zIndex: 5, background: 'rgba(255,255,255,0.8)', padding: '5px 10px', borderRadius: '5px' }}>
-                     Calculating layout...
+                 <div className="absolute top-3 left-3 z-20 px-3 py-1.5 rounded-md bg-white/90 dark:bg-slate-800/90 text-xs font-semibold text-indigo-600 dark:text-indigo-400 shadow-md backdrop-blur-md flex items-center space-x-2">
+                     <span className="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+                     <span>Calculating ELK Layout...</span>
                  </div>
              )}
             <ReactFlow
@@ -201,18 +202,16 @@ const OrganizationGraph = ({ repositories, contributors }) => {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 nodeTypes={nodeTypes}
-                // onInit={onInit} // Can likely remove this
-                // fitView // fitView is now triggered manually after layout
                 fitViewOptions={{ padding: 0.15 }}
                 minZoom={0.1}
                 maxZoom={3}
                 attributionPosition="bottom-right"
                 elementsSelectable={true}
                 nodesDraggable={true}
-                nodesConnectable={false} // Keep false unless needed
+                nodesConnectable={false}
             >
-                <Background color="#e0e0e0" gap={20} size={1.5} />
-                <Controls />
+                <Background color="#cbd5e1" gap={24} size={1.2} className="dark:opacity-20" />
+                <Controls className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 shadow-md rounded-lg" />
             </ReactFlow>
         </div>
     );
