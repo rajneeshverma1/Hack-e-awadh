@@ -267,6 +267,7 @@ def generate_twin_stream(system_prompt, user_prompt):
 
 @api_view(['POST'])
 def twin_stream_view(request):
+    start_time = time.time()
     user_question = request.data.get('prompt')
     contributor_id = request.data.get('contributor_id')
 
@@ -286,6 +287,10 @@ def twin_stream_view(request):
     
     try:
         stream_generator = generate_twin_stream(system_prompt, user_question)
-        return StreamingHttpResponse(stream_generator, content_type='text/plain; charset=utf-8')
+        response = StreamingHttpResponse(stream_generator, content_type='text/plain; charset=utf-8')
+        latency_ms = round((time.time() - start_time) * 1000, 2)
+        response['X-Response-Time-Ms'] = str(latency_ms)
+        print(f"[DigitalTwin Telemetry] Streaming initialized for contributor {contributor.get('username')} in {latency_ms}ms")
+        return response
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
