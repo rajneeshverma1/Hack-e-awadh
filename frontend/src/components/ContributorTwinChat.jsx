@@ -38,6 +38,8 @@ const ContributorTwinChat = ({ contributor }) => {
     }
   };
 
+  const abortControllerRef = useRef(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!prompt.trim() || isStreaming) return;
@@ -46,10 +48,16 @@ const ContributorTwinChat = ({ contributor }) => {
     setError(null);
     setStreamingResponse('');
 
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
+
     try {
       const response = await fetch('http://localhost:8000/api/twin_stream/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: abortControllerRef.current.signal,
         body: JSON.stringify({ 
           prompt: prompt.trim(),
           contributor_id: contributor.id
@@ -65,14 +73,21 @@ const ContributorTwinChat = ({ contributor }) => {
         setStreamingResponse(prev => prev + text);
       }
     } catch (err) {
-      console.error('Error streaming response:', err);
-      setError(`Failed to get response: ${err.message}`);
+      if (err.name === 'AbortError') {
+        console.log('Twin stream request cancelled.');
+      } else {
+        console.error('Error streaming response:', err);
+        setError(`Failed to get response: ${err.message}`);
+      }
     } finally {
       setIsStreaming(false);
     }
   };
 
   const resetChat = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
     setStreamingResponse('');
     setPrompt('');
     setIsStreaming(false);
@@ -80,10 +95,12 @@ const ContributorTwinChat = ({ contributor }) => {
   };
 
   const closeExpanded = () => {
-    if (!isStreaming) {
-      setIsExpanded(false);
-      setStreamingResponse('');
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
     }
+    setIsExpanded(false);
+    setStreamingResponse('');
+    setIsStreaming(false);
   };
 
   // Chat toggle button when closed
