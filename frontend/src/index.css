@@ -156,3 +156,9 @@
   transition: opacity 0.18s ease;
 }
 .tooltip:hover::after { opacity: 1; }
+
+/* Scroll fade mask for long content panels */
+.scroll-fade {
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
