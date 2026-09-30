@@ -88,14 +88,15 @@ sequenceDiagram
 
 
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack Architecture
 
-| Component | Technology |
-|---|---|
-| **Backend** | Python, Django, Llama API |
-| **Frontend** | ReactJS, Vite, Tailwind CSS |
-| **Data APIs** | GitHub API |
-| **Real-time Voice/Chat** | PlayAI API powered by Groq |
+| Layer | Technology | Details |
+| :--- | :--- | :--- |
+| **Frontend** | React 19, Vite, Tailwind CSS | Modular React architecture, React Flow graph rendering, Tailwind styling |
+| **Backend** | Python 3.10+, Django 5.2 | Django REST framework, custom serializers, chunked streaming responses |
+| **AI / LLM Engine** | Meta Llama 3, OpenAI GPT-4o | Natural language prompt synthesis, first-person twin framing |
+| **Graph Layout Engine** | ELK.js (Eclipse Layout Kernel) | Layered force-directed layout computation for complex org topologies |
+| **Real-Time Data APIs** | GitHub REST / GraphQL API | Commit telemetry ingestion, issue status mapping, author association |
 
 
 ## 🚀 Getting Started
