@@ -285,12 +285,22 @@ export default function Layout() {
                 </header>
 
                 {/* Main Content Area */}
-                <main className="py-8 lg:pl-72 h-full">
-                    <div className="px-4 sm:px-6 lg:px-8 pb-20"> {/* Added padding bottom for chat component */}
+                <main className="py-8 lg:pl-72 h-full flex flex-col justify-between">
+                    <div className="px-4 sm:px-6 lg:px-8 pb-12">
                         <Outlet />
                     </div>
                     
-                    {/* Add the LlamaChat component here */}
+                    {/* Organization Footer Bar */}
+                    <footer className="px-4 sm:px-6 lg:px-8 py-4 border-t border-gray-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 dark:text-gray-400 gap-2">
+                        <div className="flex items-center space-x-2">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>OrgLens AI Telemetry Operational</span>
+                        </div>
+                        <div>
+                            Powered by <span className="font-semibold text-gray-700 dark:text-gray-300">Meta Llama</span> &bull; CC BY-NC 4.0
+                        </div>
+                    </footer>
+
                     <LlamaChat />
                 </main>
             </div>
