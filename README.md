@@ -37,13 +37,21 @@ OrgLens synthesizes an autonomous **Digital Twin** for each software developer u
 1. **Telemetry Retrieval**: Queries DB serializers to aggregate recent commit messages, closed issues, and repository involvement for a given developer ID.
 2. **Contextual Ingestion**: Formats historical activity into a structured memory buffer injected into system prompts.
 3. **First-Person Grounding**: Enforces strict first-person voice constraint (*"I refactored the auth pipeline...", "My commit in backend/api/ views..."*).
-4. **Resilient Streaming**: Emits chunked markdown tokens with automatic fallback generation if upstream API keys are unconfigured.
+### 🔌 REST API Specifications
 
-#### 3. Frontend Chat Component (`ContributorTwinChat.jsx`)
-* **Floating Widget Integration**: Embedded inside [ContributorDetail.jsx](file:///Users/apple/Desktop/llama/frontend/src/pages/ContributorDetail.jsx) with fixed bottom-right positioning.
-* **Readable Streams Handler**: Uses standard Fetch API `response.body.getReader()` with `TextDecoder` to stream markdown text tokens in real time.
-* **Interactive Prompt Chips**: Quick action buttons allow users to send predefined queries instantly.
-* **Responsive Dark/Light Layout**: Full Tailwind CSS adaptation matching global theme state.
+| Method | Endpoint | Description | Response Format |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/get_data/` | Returns full organization graph payload (repos & contributors) | `JSON` |
+| `POST` | `/api/llm_stream/` | Global natural language codebase query stream | `text/plain` (chunked) |
+| `POST` | `/api/twin_stream/` | Interactive Digital Twin persona chat stream | `text/plain` (chunked) |
+
+#### Sample Twin Stream Request Payload
+```json
+{
+  "contributor_id": 1,
+  "prompt": "What was your main contribution to the backend API?"
+}
+```
 
 #### 4. End-to-End Execution Flow
 
