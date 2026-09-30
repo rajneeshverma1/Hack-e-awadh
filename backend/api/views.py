@@ -268,11 +268,15 @@ def generate_twin_stream(system_prompt, user_prompt):
 @api_view(['POST'])
 def twin_stream_view(request):
     start_time = time.time()
-    user_question = request.data.get('prompt')
+    user_question = request.data.get('prompt', '').strip()
     contributor_id = request.data.get('contributor_id')
 
-    if not user_question or not contributor_id:
-        return HttpResponseBadRequest("Missing 'prompt' or 'contributor_id'.")
+    if not user_question or contributor_id is None:
+        return HttpResponseBadRequest("Missing required payload fields: 'prompt' and 'contributor_id'.")
+
+    # Enforce maximum prompt payload limit
+    if len(user_question) > 2000:
+        return HttpResponseBadRequest("Prompt exceeds maximum length limit of 2000 characters.")
 
     # Fetch data to build context
     data_serializer = DataSerializer().to_representation(DataSerializer())
