@@ -168,3 +168,17 @@ This repository is distributed under the **Creative Commons Attribution-NonComme
 
 ---
 *Built with ❤️ for understanding complex codebases.*
+
+
+---
+
+## 🔐 Environment Variables Reference
+
+| Variable | Required | Description |
+| :--- | :---: | :--- |
+| `OPENAI_API_KEY` | Optional | OpenAI GPT-4o key for Digital Twin LLM streaming |
+| `LLAMA_API_KEY` | Optional | Meta Llama 3 API key (fallback or primary model) |
+| `DJANGO_SECRET_KEY` | ✅ | Django secret key for CSRF and session signing |
+| `ALLOWED_HOSTS` | ✅ | Comma-separated list of permitted host headers |
+| `CORS_ALLOWED_ORIGINS` | ✅ | Frontend origin URL(s) allowed to call the API |
+| `DEBUG` | Optional | Set `False` in production (default: `True`) |
