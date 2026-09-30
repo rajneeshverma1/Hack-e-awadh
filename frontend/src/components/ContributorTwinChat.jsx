@@ -24,6 +24,17 @@ const ContributorTwinChat = ({ contributor }) => {
     }
   }, [streamingResponse]);
 
+  // Escape key event listener to close twin chat modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isExpanded) {
+        closeExpanded();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isExpanded]);
+
   const handleInputFocus = () => {
     setIsFocused(true);
     if (!isExpanded && !isStreaming) {
