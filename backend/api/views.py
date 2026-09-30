@@ -332,3 +332,15 @@ def contributor_count(request):
     from .models import Contributor
     count = Contributor.objects.count()
     return Response({"total_contributors": count})
+
+
+# --- Repository Count Summary ---
+@api_view(['GET'])
+def repository_count(request):
+    """
+    Returns the total number of indexed repositories in the organization.
+    Used by the dashboard metrics bar.
+    """
+    from .models import Repository
+    count = Repository.objects.count()
+    return Response({"total_repositories": count})
