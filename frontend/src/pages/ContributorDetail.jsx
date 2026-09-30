@@ -37,13 +37,13 @@ export default function ContributorDetail() {
   const [expandedSections, setExpandedSections] = useState({});
 
   
-  const toggleSection = (repoId, sectionType) => {
+  const toggleSection = React.useCallback((repoId, sectionType) => {
     const key = `${repoId}-${sectionType}`;
     setExpandedSections(prev => ({
       ...prev,
       [key]: !prev[key]
     }));
-  };
+  }, []);
   
   if (isLoading) {
     return (
