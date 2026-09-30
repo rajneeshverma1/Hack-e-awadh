@@ -147,10 +147,14 @@ sequenceDiagram
 
 4.  **Access the App:** Open your browser to the frontend URL (e.g., `http://localhost:5173`).
 
-## 🌍 Deployment
+## 🌍 Deployment Matrix
 
-- **Frontend**: Designed for Vercel/Netlify.
-- **Backend**: Ready for Render/Railway.
+| Service | Recommended Platform | Build Command | Start Command |
+| :--- | :--- | :--- | :--- |
+| **Frontend** | [Vercel](https://vercel.com/) | `npm run build` | Static SPA / Vite preset |
+| **Backend** | [Render](https://render.com/) / Railway | `pip install -r requirements.txt && python manage.py migrate` | `gunicorn config.wsgi:application` |
+
+See [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md) for full step-by-step production configuration, reverse proxy setup, and environment variables.
 
 ## 🤝 Contributors
 
