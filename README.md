@@ -1,28 +1,23 @@
-# OrgLens - Codebase Intelligence
+# OrgLens — Codebase Intelligence & Expert Discovery
 
-[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
-[![Llama](https://img.shields.io/badge/Meta_Llama-0467DF?style=for-the-badge&logo=meta&logoColor=white)](https://llama.meta.com/)
-
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev/)
+[![Django](https://img.shields.io/badge/Django-5.2-092E20?style=flat-square&logo=django)](https://www.djangoproject.com/)
+[![Meta Llama](https://img.shields.io/badge/Llama-3-0467DF?style=flat-square&logo=meta)](https://llama.meta.com/)
+[![License](https://img.shields.io/badge/License-CC--BY--NC--4.0-blue?style=flat-square)](LICENSE)
 
 https://github.com/user-attachments/assets/7496afda-b3e3-4e1d-b03f-ddc43982b7a1
 
-*OrgLens: Understanding your codebase and connecting with experts, powered by Llama.*
+OrgLens is an intelligent developer portal designed to eliminate tribal knowledge silos across engineering organizations. By indexing repository commit graphs, pull requests, issue threads, and contributor activity, OrgLens gives teams instant visibility into who owns what and enables real-time interaction with developer **Digital Twins**.
 
-## 🌟 Why OrgLens?
+---
 
-### The Problem
+## 💡 The Problem & Our Approach
 
-Finding the right expert or understanding code history in large organizations is time-consuming and inefficient. Key knowledge often stays siloed or buried in commit logs.
+### The Challenge
+In scaling engineering teams, institutional knowledge gets buried across hundreds of commit histories, pull requests, and fragmented documentation. Onboarding engineers spend weeks figuring out who built a specific service or why an architectural decision was made.
 
-## Our Solution: OrgLens
-
-OrgLens connects to your GitHub organization, analyzes repositories, commits, and contributors, and uses **Llama** to generate insightful summaries. It helps you:
-
-*   Instantly find contributors with specific expertise.
-*   Understand individual contributions through AI-generated profiles.
-*   Query your codebase's history and activity using natural language.
-*   Interact with contributor "digital twins" (AI based on their work) for context before direct contact**.
+### The OrgLens Solution
+OrgLens ingests git telemetry across your GitHub organization, builds an interactive force-directed graph of contributor-repository relationships, and deploys **Digital Twins**—AI personas modeled on each developer's actual code contributions—allowing you to ask technical questions asynchronously.
 
 ## Core Features
 
