@@ -126,8 +126,9 @@ Vercel will build your React application and provide you with a live, production
 ### 7. Environment Checklist
 - Ensure `OPENAI_API_KEY` and `GITHUB_TOKEN` are populated in production settings.
 
-### 8. Release Notes (v1.2.0)
-- Added AbortController stream cancellation for Digital Twin chats.
-- Implemented localStorage caching for instant telemetry rendering.
-- Enhanced ELK layout graph node styling and responsiveness.
+### 8. Release Notes (v1.3.0)
+- Complete human-centered redesign of `README.md` and REST API documentation.
+- Integrated strict payload sanitization and prompt length limits (`max 2000 chars`).
+- Added Escape key shortcuts to close floating persona modals.
+- Enhanced ELK graph node aesthetics, avatar borders, and status footer bar.
 
