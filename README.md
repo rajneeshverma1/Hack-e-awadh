@@ -156,19 +156,15 @@ sequenceDiagram
 
 See [DEPLOY_GUIDE.md](DEPLOY_GUIDE.md) for full step-by-step production configuration, reverse proxy setup, and environment variables.
 
-## 🤝 Contributors
+## 🤝 Contributors & Credits
 
-*   Rajneesh Verma - [GitHub](https://github.com/rajneeshverma1)
+* **Lead Architect**: Rajneesh Verma ([@rajneeshverma1](https://github.com/rajneeshverma1))
+* **AI Model Infrastructure**: Meta Llama 3 & OpenAI GPT models
+* **Graph Layout Algorithm**: Eclipse Layout Kernel (ELK)
 
-## Acknowledgements
+## 📄 License & Terms
 
-*   Powered by **Meta Llama**.
-## Support
+This repository is distributed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license. See [LICENSE](LICENSE) for details.
 
-For any questions or issues, please open a GitHub issue.
-
-## License
-
-This project is licensed under CC BY-NC 4.0. No commercial use allowed without explicit permission.
-
-- **Theme Mode**: Full Light and Dark Mode toggle support.
+---
+*Built with ❤️ for understanding complex codebases.*
