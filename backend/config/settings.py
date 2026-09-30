@@ -143,4 +143,16 @@ REST_FRAMEWORK = {
 
 LLAMA_API_KEY = os.getenv('LLAMA_API_KEY')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
-# Environment helper configuration
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
