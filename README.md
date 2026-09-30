@@ -214,3 +214,30 @@ Hack-e-awadh/
 * **Chunked Streaming**: Twin and LLM endpoints use Django `StreamingHttpResponse` with `text/plain` content type, allowing browsers to render tokens progressively without waiting for full completion.
 * **Lazy Component Loading**: Heavy graph visualization components are code-split via Vite's dynamic `import()` to reduce initial bundle size.
 * **Memoised Context**: `DataContext` caches parsed contributor and repository objects across page navigations using `useMemo` to prevent redundant fetch cycles.
+
+
+## 🧪 Testing Guide
+
+### Backend Unit Tests
+\`\`\`bash
+cd backend
+python manage.py test api
+\`\`\`
+
+### Frontend Component Tests
+\`\`\`bash
+cd frontend
+npm run test        # Vitest unit tests
+npm run test:e2e    # Playwright E2E suite (requires running dev server)
+\`\`\`
+
+### API Smoke Test (cURL)
+\`\`\`bash
+# Test health probe
+curl http://localhost:8000/api/health/
+
+# Test Digital Twin stream
+curl -X POST http://localhost:8000/api/twin_stream/ \
+  -H "Content-Type: application/json" \
+  -d '{"contributor_id": 1, "prompt": "Tell me about your recent commits"}'
+\`\`\`
