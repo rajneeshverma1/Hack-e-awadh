@@ -144,38 +144,29 @@ def get_user_prompt(user_question):
 @api_view(['POST'])
 def llm_stream_view(request):
     """
-    Handles POST requests containing a 'prompt' and returns a StreamingHttpResponse
-    with the OpenAI completion stream.
+    Handles POST requests containing a 'prompt' and returns a StreamingHttpResponse.
     """
-    user_question = request.data.get('prompt')
+    user_question = request.data.get('prompt', '').strip()
 
     if not user_question:
         return HttpResponseBadRequest("Missing 'prompt' in request body.")
 
-    if not client:
-         return JsonResponse({"error": "OpenAI client not configured"}, status=503) # 503 Service Unavailable
-    
-    system_prompt = get_system_prompt()
+    if len(user_question) > 2000:
+        return HttpResponseBadRequest("Prompt size limit exceeded (max 2000 characters).")
 
+    system_prompt = get_system_prompt()
     user_prompt = get_user_prompt(user_question)
 
-    print(f"System Prompt: {system_prompt}")
-    print(f"User Prompt: {user_prompt}")
-
     try:
-        # Create the generator
         stream_generator = generate_openai_stream(system_prompt, user_prompt)
-
-
         response = StreamingHttpResponse(
             stream_generator,
-            content_type='text/plain; charset=utf-8' # Simpler for basic fetch handling
+            content_type='text/plain; charset=utf-8'
         )
+        response['X-Accel-Buffering'] = 'no'
         return response
-
     except Exception as e:
-        # Catch potential errors during generator setup (though most are handled inside)
-        print(f"Error setting up stream view: {e}")
+        print(f"[LLMStream Telemetry Error]: {e}")
         return JsonResponse({"error": f"Failed to start stream: {str(e)}"}, status=500)
 
 # --- Digital Twin Chat View ---
