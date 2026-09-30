@@ -241,3 +241,16 @@ curl -X POST http://localhost:8000/api/twin_stream/ \
   -H "Content-Type: application/json" \
   -d '{"contributor_id": 1, "prompt": "Tell me about your recent commits"}'
 \`\`\`
+
+
+## 🗺️ Roadmap
+
+| Milestone | Status | Description |
+| :--- | :---: | :--- |
+| Core Organization Graph | ✅ Done | Force-directed ELK graph of repos & contributors |
+| Digital Twin Chat | ✅ Done | Streaming LLM persona engine with fallback |
+| Global NL Search | ✅ Done | Llama-powered codebase query interface |
+| GitHub OAuth Login | 🔄 In Progress | SSO authentication via GitHub OAuth App |
+| Team Analytics Dashboard | 🔄 In Progress | Aggregated commit velocity and bus-factor metrics |
+| Slack / Teams Integration | 📋 Planned | Notify teams when a Digital Twin is queried |
+| Embed Widget SDK | 📋 Planned | Embeddable twin widget for internal wikis |
