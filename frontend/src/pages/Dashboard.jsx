@@ -213,11 +213,11 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto pb-12">
       {/* Dashboard Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-lg shadow-lg mb-8 overflow-hidden">
+      <div className="bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 rounded-xl shadow-xl mb-8 overflow-hidden border border-indigo-400/20">
         <div className="px-6 py-8 sm:px-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center">
-              <PresentationChartBarIcon className="h-8 w-8 text-white mr-4" />
+              <PresentationChartBarIcon className="h-8 w-8 text-white mr-4 shadow-sm" />
               <div>
                 <h1 className="text-2xl font-bold text-white">Hi Zuck,</h1>
                 <p className="text-indigo-100 mt-1">
