@@ -33,29 +33,29 @@ const ContributorNode = ({ data }) => {
   return (
     // The main div remains the group parent
     <div
-      className="contributor-node group relative bg-gradient-to-r from-green-50 to-blue-50 border border-gray-200 dark:border-slate-700 rounded-lg shadow-sm transition-all hover:shadow-md flex items-center h-full"
+      className="contributor-node group relative bg-white/95 dark:bg-slate-800/95 border border-emerald-200/60 dark:border-emerald-900/40 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 flex items-center h-full backdrop-blur-md"
       style={{ width: nodeWidth, height: nodeHeight }}
     >
        {/* Node Content Wrapper */}
-       <div className="p-3 flex items-center flex-grow">
+       <div className="p-2.5 flex items-center flex-grow">
           {/* Handles without specific IDs */}
           <Handle type="target" position={Position.Left} className="!w-1 !h-full !rounded-none !bg-transparent !border-none" />
-          <Handle type="source" position={Position.Top} className="!w-1 !h-full !rounded-none !bg-transparent !border-none" />
+          <Handle type="source" position={Position.Top} className="!w-2.5 !h-2.5 !bg-emerald-500 !rounded-full !border-2 !border-white" />
 
           {data.avatar_url ? (
             <img
               src={data.avatar_url}
               alt={data.username}
-              className="w-9 h-9 rounded-full border border-gray-300 dark:border-slate-600 shadow-sm flex-shrink-0"
+              className="w-9 h-9 rounded-full border-2 border-emerald-500/30 shadow-sm flex-shrink-0 object-cover"
             />
           ) : (
-            <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 dark:text-gray-300 font-medium text-sm flex-shrink-0">
+            <div className="w-9 h-9 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 font-bold text-sm flex items-center justify-center flex-shrink-0">
               {data.username ? data.username.substring(0, 1).toUpperCase() : '?'}
             </div>
           )}
-          <div className="ml-3 flex-grow min-w-0">
-            <h4 className="text-sm font-medium truncate" title={data.username}>{data.username}</h4>
-            <p className="text-xs text-emerald-700">Contributor</p>
+          <div className="ml-2.5 flex-grow min-w-0">
+            <h4 className="text-xs font-semibold text-gray-900 dark:text-white truncate" title={data.username}>{data.username}</h4>
+            <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">Engineer</span>
           </div>
        </div>
 
