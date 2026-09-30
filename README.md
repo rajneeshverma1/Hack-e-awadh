@@ -19,12 +19,13 @@ In scaling engineering teams, institutional knowledge gets buried across hundred
 ### The OrgLens Solution
 OrgLens ingests git telemetry across your GitHub organization, builds an interactive force-directed graph of contributor-repository relationships, and deploys **Digital Twins**—AI personas modeled on each developer's actual code contributions—allowing you to ask technical questions asynchronously.
 
-## Core Features
+## ✨ Key Features
 
-✨ **AI-Powered Contributor Summaries & Profiles**.
-🔍 **Natural Language Codebase Querying**.
-🌐 **Repository & Contributor Exploration**.
-🤖 **"Digital Twin" Interaction via Chat**.
+* **🕸️ Interactive Organization Knowledge Graph**: Render layered topology diagrams linking engineers to the exact microservices and repositories they maintain using ELK layout algorithms.
+* **🤖 Contributor Digital Twins**: Chat directly with AI clones trained on each developer's commit logs, pull request descriptions, and resolved GitHub issues.
+* **🔍 Global Natural Language Search**: Query your organization's entire codebase activity to locate subject-matter experts instantly.
+* **⚡ Real-time Token Streaming**: Low-latency chunked HTTP stream responses powered by Meta Llama / OpenAI models.
+* **🎨 Seamless Light & Dark Theme**: Custom glassmorphism UI with native dark mode support and local preference persistence.
 
 ---
 
