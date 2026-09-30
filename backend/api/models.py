@@ -50,6 +50,12 @@ class Issue(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-updated_at']
+
+    def __str__(self):
+        return f"Issue #{self.id} ({self.work.repository.name})"
+
 class Commit(models.Model):
     id = models.AutoField(primary_key=True)
     work = models.ForeignKey(RepositoryWork, on_delete=models.CASCADE, related_name='commits')
@@ -58,3 +64,9 @@ class Commit(models.Model):
     summary = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated_at']
+
+    def __str__(self):
+        return f"Commit #{self.id} ({self.work.repository.name})"
