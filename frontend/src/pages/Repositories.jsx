@@ -28,10 +28,11 @@ export default function Repositories() {
   const { repositories, contributors, isLoading, error } = useData();
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Filter repositories based on search query
+  // Filter repositories based on trimmed search query
+  const query = searchQuery.trim().toLowerCase();
   const filteredRepositories = repositories.filter(repo => 
-    repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    repo.summary.toLowerCase().includes(searchQuery.toLowerCase())
+    repo.name.toLowerCase().includes(query) ||
+    repo.summary.toLowerCase().includes(query)
   );
 
   // Helper function to get contributor count for a repository
