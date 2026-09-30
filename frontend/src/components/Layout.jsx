@@ -230,12 +230,13 @@ export default function Layout() {
                 </div>
 
                 {/* Top Header Navbar */}
-                <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-sm px-4 shadow-xs sm:px-6 lg:px-8 lg:ml-72 transition-colors duration-300">
+                <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs px-4 sm:px-6 lg:px-8 lg:ml-72 transition-colors duration-300">
                     <div className="flex items-center gap-x-4">
                         <button
                             type="button"
                             onClick={() => setSidebarOpen(true)}
-                            className="-m-2.5 p-2.5 text-gray-700 dark:text-gray-200 lg:hidden"
+                            aria-label="Open navigation menu"
+                            className="-m-2.5 p-2.5 text-gray-700 dark:text-gray-200 lg:hidden hover:text-indigo-600 transition-colors"
                         >
                             <span className="sr-only">Open sidebar</span>
                             <Bars3Icon aria-hidden="true" className="size-6" />
