@@ -38,6 +38,7 @@ export default function Dashboard() {
   const [recentActivity, setRecentActivity] = useState([]);
   const [graphKey, setGraphKey] = useState(Date.now());
   const [graphZoomed, setGraphZoomed] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Settings for graph display
   const [settings, setSettings] = useState({
