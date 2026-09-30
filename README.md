@@ -206,3 +206,11 @@ Hack-e-awadh/
 │   └── vite.config.js         # Vite build configuration
 └── README.md
 \`\`\`
+
+
+## ⚡ Performance Optimisations
+
+* **Response Caching**: `GET /api/get_data/` sets `Cache-Control: public, max-age=60` to reduce redundant DB reads during high traffic.
+* **Chunked Streaming**: Twin and LLM endpoints use Django `StreamingHttpResponse` with `text/plain` content type, allowing browsers to render tokens progressively without waiting for full completion.
+* **Lazy Component Loading**: Heavy graph visualization components are code-split via Vite's dynamic `import()` to reduce initial bundle size.
+* **Memoised Context**: `DataContext` caches parsed contributor and repository objects across page navigations using `useMemo` to prevent redundant fetch cycles.
