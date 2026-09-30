@@ -47,11 +47,11 @@ export default function ContributorDetail() {
   
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-64">
+      <div className="flex items-center justify-center h-72">
         <div className="animate-pulse flex flex-col items-center">
-          <div className="rounded-full bg-slate-200 h-16 w-16 mb-4"></div>
-          <div className="h-4 bg-slate-200 rounded w-48 mb-2"></div>
-          <div className="h-3 bg-slate-200 rounded w-64"></div>
+          <div className="rounded-full bg-slate-200 dark:bg-slate-700 h-20 w-20 mb-4 shadow-sm"></div>
+          <div className="h-5 bg-slate-200 dark:bg-slate-700 rounded-md w-56 mb-3"></div>
+          <div className="h-3.5 bg-slate-200 dark:bg-slate-700 rounded-md w-72"></div>
         </div>
       </div>
     );
