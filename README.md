@@ -269,3 +269,18 @@ curl -X POST http://localhost:8000/api/twin_stream/ \
 | `GET` | `/api/repositories/count/` | None | Total indexed repository count |
 | `GET` | `/api/repositories/active/` | None | Repos with active contributor work |
 | `GET` | `/api/contributors/top/` | None | Top contributors by activity |
+
+
+## 🧩 Architecture Decision Records (ADRs)
+
+### ADR-001: Chunked Streaming over WebSockets
+**Decision**: Use Django `StreamingHttpResponse` with chunked `text/plain` encoding rather than WebSockets for LLM token delivery.
+**Rationale**: Simplifies server infrastructure (no async consumer/channel layer), works natively with Render/Railway deployment without additional Redis broker setup, and delivers comparable UX for one-shot query-response flows.
+
+### ADR-002: ELK.js for Graph Layout
+**Decision**: Use Eclipse Layout Kernel (ELK.js) over D3-force for graph positioning.
+**Rationale**: ELK's hierarchical layout algorithm produces clearer visual separation between repository clusters and contributor nodes, critical for large orgs with 50+ contributors and 100+ repositories.
+
+### ADR-003: First-Person System Prompt Grounding
+**Decision**: Enforce first-person voice in all Digital Twin system prompts.
+**Rationale**: Early testing revealed that third-person prompts produced responses that felt impersonal and broke the "expert consultation" use case. First-person grounding significantly improved perceived trustworthiness in user studies.
