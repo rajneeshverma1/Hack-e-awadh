@@ -320,3 +320,15 @@ def ping(request):
         "pong": True,
         "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
     })
+
+
+# --- Contributor Count Summary ---
+@api_view(['GET'])
+def contributor_count(request):
+    """
+    Returns the total number of indexed contributors in the organization.
+    Used by the dashboard metrics bar.
+    """
+    from .models import Contributor
+    count = Contributor.objects.count()
+    return Response({"total_contributors": count})
