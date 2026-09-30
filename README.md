@@ -29,32 +29,15 @@ OrgLens ingests git telemetry across your GitHub organization, builds an interac
 
 ---
 
-## 🤖 Digital Twin Architecture
+## 🤖 Digital Twin Persona Engine
 
-OrgLens introduces **Digital Twins**—autonomous AI personas synthesized for every software engineer in your organization based on their real commit history, pull requests, issue resolutions, and repository activity.
+OrgLens synthesizes an autonomous **Digital Twin** for each software developer using actual git telemetry. The persona engine dynamically generates system prompts framing the LLM to speak in the developer's voice while maintaining precise technical context.
 
-### ⚙️ Backend API & Prompt Pipeline Specification
-
-The Digital Twin feature is powered by Django REST endpoints that dynamically build persona system prompts and stream responses using chunked transfer encoding (`StreamingHttpResponse`).
-
-#### 1. Endpoint Details
-* **Route**: `POST /api/twin_stream/`
-* **Content-Type**: `application/json`
-* **Request Payload**:
-  ```json
-  {
-    "contributor_id": 1,
-    "prompt": "What was your approach to optimizing the React rendering pipeline?"
-  }
-  ```
-* **Response Header**: `Content-Type: text/plain; charset=utf-8` (chunked HTTP stream)
-
-#### 2. Dynamic System Persona Construction
-When a user initiates a chat session, the backend gathers relevant contextual telemetry:
-1. **Contributor Profile & Overview**: Pulls overall contribution summaries from `DataSerializer`.
-2. **Repository Mapping**: Links contributor activity with specific repositories and summaries.
-3. **Commit & Issue History**: Ingests recent commit messages, solved GitHub issues, and PR context.
-4. **Persona Framing**: Enforces first-person persona execution ("I built...", "In my recent commit...").
+### Persona Assembly Steps
+1. **Telemetry Retrieval**: Queries DB serializers to aggregate recent commit messages, closed issues, and repository involvement for a given developer ID.
+2. **Contextual Ingestion**: Formats historical activity into a structured memory buffer injected into system prompts.
+3. **First-Person Grounding**: Enforces strict first-person voice constraint (*"I refactored the auth pipeline...", "My commit in backend/api/ views..."*).
+4. **Resilient Streaming**: Emits chunked markdown tokens with automatic fallback generation if upstream API keys are unconfigured.
 
 #### 3. Frontend Chat Component (`ContributorTwinChat.jsx`)
 * **Floating Widget Integration**: Embedded inside [ContributorDetail.jsx](file:///Users/apple/Desktop/llama/frontend/src/pages/ContributorDetail.jsx) with fixed bottom-right positioning.
