@@ -20,11 +20,14 @@ except Exception as e:
 @api_view(['GET'])
 def get_data(request):
     """
-    A simple endpoint to return the data.
+    Returns full organization telemetry (repositories & contributors).
+    Includes Cache-Control headers for client side efficiency.
     """
-    data = DataSerializer()
-    data = data.to_representation(data)
-    return Response(data)
+    serializer = DataSerializer()
+    data = serializer.to_representation(serializer)
+    response = Response(data)
+    response['Cache-Control'] = 'public, max-age=60'
+    return response
 
 # --- LLM Streaming View ---
 
