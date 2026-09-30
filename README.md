@@ -182,3 +182,27 @@ This repository is distributed under the **Creative Commons Attribution-NonComme
 | `ALLOWED_HOSTS` | ✅ | Comma-separated list of permitted host headers |
 | `CORS_ALLOWED_ORIGINS` | ✅ | Frontend origin URL(s) allowed to call the API |
 | `DEBUG` | Optional | Set `False` in production (default: `True`) |
+
+
+## 📂 Project Structure
+
+\`\`\`
+Hack-e-awadh/
+├── backend/
+│   ├── api/
+│   │   ├── models.py          # Contributor, Repository, RepositoryWork models
+│   │   ├── serializers.py     # DataSerializer — full org graph serialization
+│   │   ├── views.py           # REST endpoints + LLM streaming views
+│   │   └── urls.py            # API URL routing
+│   └── config/
+│       ├── settings.py        # Django settings (CORS, INSTALLED_APPS, etc.)
+│       └── wsgi.py            # WSGI entrypoint for production deployment
+├── frontend/
+│   ├── src/
+│   │   ├── components/        # ContributorTwinChat, LlamaChat, Nodes, etc.
+│   │   ├── pages/             # Dashboard, ContributorDetail, RepoList, etc.
+│   │   ├── context/           # DataContext — global org data provider
+│   │   └── main.jsx           # React app entrypoint
+│   └── vite.config.js         # Vite build configuration
+└── README.md
+\`\`\`
