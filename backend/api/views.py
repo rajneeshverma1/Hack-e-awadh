@@ -357,3 +357,21 @@ def active_repos(request):
     active_ids = RepositoryWork.objects.values_list('repository_id', flat=True).distinct()
     repos = Repository.objects.filter(id__in=active_ids).values('id', 'name', 'url')
     return Response({"active_repositories": list(repos), "count": repos.count()})
+
+
+# --- Top Contributors ---
+@api_view(['GET'])
+def top_contributors(request):
+    """
+    Returns contributors ordered by total number of repository work entries (descending).
+    Limit defaults to 10, configurable via ?limit= query param.
+    """
+    from .models import Contributor, RepositoryWork
+    from django.db.models import Count
+    limit = int(request.query_params.get('limit', 10))
+    top = (
+        Contributor.objects.annotate(work_count=Count('repositorywork'))
+        .order_by('-work_count')[:limit]
+        .values('id', 'username', 'work_count')
+    )
+    return Response({"top_contributors": list(top)})
