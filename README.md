@@ -293,3 +293,17 @@ curl -X POST http://localhost:8000/api/twin_stream/ \
 * **Rate Limiting**: Apply Django Ratelimit or a reverse-proxy rate limit rule to `/api/twin_stream/` and `/api/llm_stream/` to prevent abuse.
 * **Input Sanitisation**: Contributor IDs and prompt strings are validated server-side before being injected into system prompts to prevent prompt injection.
 * **Dependency Scanning**: Run `pip audit` and `npm audit` regularly to catch known CVEs in the dependency tree.
+
+
+---
+
+<div align="center">
+
+### ⭐ If OrgLens helped your team, please give it a star!
+
+**OrgLens** — *Making institutional knowledge accessible, one Digital Twin at a time.*
+
+[![GitHub Stars](https://img.shields.io/github/stars/rajneeshverma1/Hack-e-awadh?style=social)](https://github.com/rajneeshverma1/Hack-e-awadh)
+[![GitHub Forks](https://img.shields.io/github/forks/rajneeshverma1/Hack-e-awadh?style=social)](https://github.com/rajneeshverma1/Hack-e-awadh/fork)
+
+</div>
