@@ -344,3 +344,16 @@ def repository_count(request):
     from .models import Repository
     count = Repository.objects.count()
     return Response({"total_repositories": count})
+
+
+# --- Active Repositories List ---
+@api_view(['GET'])
+def active_repos(request):
+    """
+    Returns repositories with at least one associated contributor work entry.
+    Useful for filtering the graph to active projects only.
+    """
+    from .models import Repository, RepositoryWork
+    active_ids = RepositoryWork.objects.values_list('repository_id', flat=True).distinct()
+    repos = Repository.objects.filter(id__in=active_ids).values('id', 'name', 'url')
+    return Response({"active_repositories": list(repos), "count": repos.count()})
