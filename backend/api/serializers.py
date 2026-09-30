@@ -18,12 +18,13 @@ class RepositorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RepositoryWorkSerializer(serializers.ModelSerializer):
+    """Serializes repository contributions including nested issues and commits."""
     issues = IssueSerializer(many=True, read_only=True)
     commits = CommitSerializer(many=True, read_only=True)
 
     class Meta:
         model = RepositoryWork
-        fields = '__all__'
+        fields = ['id', 'repository', 'contributor', 'summary', 'issues', 'commits', 'created_at', 'updated_at']
 
 class ContributorSerializer(serializers.ModelSerializer):
     works = RepositoryWorkSerializer(many=True, read_only=True)
