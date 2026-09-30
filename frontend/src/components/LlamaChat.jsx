@@ -48,18 +48,26 @@ const LlamaChat = () => {
     }
   };
 
+  const abortControllerRef = useRef(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!prompt.trim() || isStreaming) return;
 
     setIsStreaming(true);
     setError(null);
-    setStreamingResponse(''); // Clear previous response
+    setStreamingResponse('');
+
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
 
     try {
       const response = await fetch('http://localhost:8000/api/llm_stream/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: abortControllerRef.current.signal,
         body: JSON.stringify({ prompt: prompt.trim() }),
       });
       if (!response.ok) throw new Error(`Server error: ${response.status}`);
