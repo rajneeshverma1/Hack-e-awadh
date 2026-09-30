@@ -292,3 +292,17 @@ def twin_stream_view(request):
         return response
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
+
+# --- Health Check Endpoint ---
+@api_view(['GET'])
+def health_check(request):
+    """
+    Lightweight liveness probe for deployment health monitoring.
+    Returns 200 OK with service status metadata.
+    """
+    return Response({
+        "status": "ok",
+        "service": "OrgLens API",
+        "version": "1.4.0",
+    })
