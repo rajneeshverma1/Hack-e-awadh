@@ -375,3 +375,18 @@ def top_contributors(request):
         .values('id', 'username', 'work_count')
     )
     return Response({"top_contributors": list(top)})
+
+
+# --- Search Contributors by Username ---
+@api_view(['GET'])
+def search_contributors(request):
+    """
+    Fuzzy username search for contributors.
+    Query: /api/contributors/search/?q=<username_fragment>
+    """
+    from .models import Contributor
+    q = request.query_params.get('q', '').strip()
+    if not q:
+        return HttpResponseBadRequest("Missing 'q' query parameter.")
+    results = Contributor.objects.filter(username__icontains=q).values('id', 'username')
+    return Response({"results": list(results), "query": q})
