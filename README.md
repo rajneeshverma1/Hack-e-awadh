@@ -254,3 +254,18 @@ curl -X POST http://localhost:8000/api/twin_stream/ \
 | Team Analytics Dashboard | 🔄 In Progress | Aggregated commit velocity and bus-factor metrics |
 | Slack / Teams Integration | 📋 Planned | Notify teams when a Digital Twin is queried |
 | Embed Widget SDK | 📋 Planned | Embeddable twin widget for internal wikis |
+
+
+## 🌐 API Endpoints Reference (v1.4)
+
+| Method | Endpoint | Auth | Description |
+| :--- | :--- | :---: | :--- |
+| `GET` | `/api/get_data/` | None | Full org graph (repos + contributors) |
+| `POST` | `/api/llm_stream/` | None | Global NL codebase query stream |
+| `POST` | `/api/twin_stream/` | None | Digital Twin persona chat stream |
+| `GET` | `/api/health/` | None | Liveness probe for deployment monitoring |
+| `GET` | `/api/ping/` | None | Echo endpoint for CI smoke-tests |
+| `GET` | `/api/contributors/count/` | None | Total indexed contributor count |
+| `GET` | `/api/repositories/count/` | None | Total indexed repository count |
+| `GET` | `/api/repositories/active/` | None | Repos with active contributor work |
+| `GET` | `/api/contributors/top/` | None | Top contributors by activity |
