@@ -306,3 +306,17 @@ def health_check(request):
         "service": "OrgLens API",
         "version": "1.4.0",
     })
+
+
+# --- Ping / Echo Endpoint ---
+@api_view(['GET'])
+def ping(request):
+    """
+    Echo endpoint for CI smoke-test pipelines.
+    Returns request timestamp for latency measurement.
+    """
+    import datetime
+    return Response({
+        "pong": True,
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+    })
