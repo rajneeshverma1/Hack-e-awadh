@@ -156,9 +156,9 @@ const ContributorTwinChat = ({ contributor }) => {
 
         {/* Content Area */}
         <div
-          className={`px-5 pt-5 pb-4 transition-all duration-300 ease-in-out ${
-            streamingResponse || isStreaming ? 'h-[300px]' : 'h-[120px]'
-          } overflow-y-auto bg-gray-50 dark:bg-slate-900/50`}
+          className={`px-4 pt-4 pb-3 transition-all duration-300 ease-in-out ${
+            streamingResponse || isStreaming ? 'h-[320px]' : 'h-[140px]'
+          } overflow-y-auto bg-gray-50/80 dark:bg-slate-900/60 custom-scrollbar`}
           ref={responseRef}
         >
           {!streamingResponse && !isStreaming && !error && (
