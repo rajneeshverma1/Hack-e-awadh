@@ -284,3 +284,12 @@ curl -X POST http://localhost:8000/api/twin_stream/ \
 ### ADR-003: First-Person System Prompt Grounding
 **Decision**: Enforce first-person voice in all Digital Twin system prompts.
 **Rationale**: Early testing revealed that third-person prompts produced responses that felt impersonal and broke the "expert consultation" use case. First-person grounding significantly improved perceived trustworthiness in user studies.
+
+
+## 🛡️ Security Considerations
+
+* **No Secrets in Codebase**: All API keys are loaded via environment variables; `.env` is gitignored.
+* **CORS Hardening**: Production deployments must whitelist only the frontend origin in `CORS_ALLOWED_ORIGINS`; `CORS_ALLOW_ALL_ORIGINS` should be `False`.
+* **Rate Limiting**: Apply Django Ratelimit or a reverse-proxy rate limit rule to `/api/twin_stream/` and `/api/llm_stream/` to prevent abuse.
+* **Input Sanitisation**: Contributor IDs and prompt strings are validated server-side before being injected into system prompts to prevent prompt injection.
+* **Dependency Scanning**: Run `pip audit` and `npm audit` regularly to catch known CVEs in the dependency tree.
