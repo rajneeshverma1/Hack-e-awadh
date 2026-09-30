@@ -233,6 +233,7 @@ const ContributorTwinChat = ({ contributor }) => {
                 ref={inputRef}
                 type="text"
                 value={prompt}
+                maxLength={2000}
                 onChange={(e) => setPrompt(e.target.value)}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
