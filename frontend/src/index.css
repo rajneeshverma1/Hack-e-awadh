@@ -59,3 +59,8 @@
   vertical-align: middle;
   color: #4f46e5;
 }
+/* === OrgLens v1.4 design tokens === */
+:root {
+  --twin-accent: #6366f1;
+  --twin-glow: rgba(99,102,241,0.18);
+}
