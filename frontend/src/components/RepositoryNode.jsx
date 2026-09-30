@@ -9,24 +9,22 @@ const RepositoryNode = ({ data }) => {
   return (
     // The main div remains the group parent
     <div
-      className="repository-node group relative bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 rounded-lg shadow-md transition-all hover:shadow-lg flex flex-col h-full text-sm"
+      className="repository-node group relative bg-white/95 dark:bg-slate-800/95 border border-gray-200/80 dark:border-slate-700/80 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full text-sm backdrop-blur-md"
       style={{ width: nodeWidth, height: nodeHeight }}
     >
       {/* Node Content Wrapper */}
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-3.5 flex flex-col flex-grow">
         {/* Handles with IDs */}
-        <Handle type="target" position={Position.Bottom} className="!w-2 !h-2 !bg-gray-400 !rounded-full !border-none" />
+        <Handle type="target" position={Position.Bottom} className="!w-2.5 !h-2.5 !bg-indigo-500 !rounded-full !border-2 !border-white" />
 
-        <h3 className="text-base font-semibold truncate mb-1.5" title={data.name}>{data.name}</h3>
-        <p className="text-sm text-gray-700 dark:text-gray-200 flex-grow overflow-hidden line-clamp-4 mb-2">
+        <h3 className="text-sm font-bold text-gray-900 dark:text-white truncate mb-1" title={data.name}>{data.name}</h3>
+        <p className="text-xs text-gray-600 dark:text-gray-300 flex-grow overflow-hidden line-clamp-3 mb-2 leading-relaxed">
           {data.summary || 'No description available.'}
         </p>
-        <div className="flex justify-between items-center mt-auto pt-2 border-t border-gray-200 dark:border-slate-700">
-          <div className="text-xs text-blue-700 font-medium">Repository</div>
-
+        <div className="flex justify-between items-center mt-auto pt-1.5 border-t border-gray-100 dark:border-slate-700/80">
+          <span className="text-[10px] uppercase font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-full">Repository</span>
         </div>
       </div>
-
     </div>
   );
 };
